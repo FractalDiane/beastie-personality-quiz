@@ -1,0 +1,82 @@
+[
+	{
+		"name": "Collarva",
+		"spriteIdle": "Collarva_idle.gif"
+	},
+	{
+		"name": "Servitt",
+		"spriteIdle": "Servitt_idle.gif"
+	},
+	{
+		"name": "Yueffowl",
+		"spriteIdle": "Yueffowl.png"
+	},
+	{
+		"name": "Woollie",
+		"spriteIdle": "Woollie.png"
+	},
+	{
+		"name": "Leobro",
+		"spriteIdle": "Leobro.png"
+	},
+	{
+		"name": "Skibble",
+		"spriteIdle": "Skibble_idle.gif"
+	},
+	{
+		"name": "Sefren",
+		"spriteIdle": "Sefren_idle.gif"
+	},
+	{
+		"name": "Sprecko",
+		"spriteIdle": "Sprecko_idle.gif"
+	},
+	{
+		"name": "Webbounce",
+		"spriteIdle": "Webbounce.png"
+	},
+	{
+		"name": "Gullit",
+		"spriteIdle": "Gullit_idle.gif"
+	},
+	{
+		"name": "Merrifly",
+		"spriteIdle": "Merrifly_idle.gif"
+	},
+	{
+		"name": "Calcroach",
+		"spriteIdle": "Calcroach.png"
+	},
+	{
+		"name": "Troglum",
+		"spriteIdle": "Troglum.png"
+	},
+	{
+		"name": "Rookee",
+		"spriteIdle": "Rookee_idle.gif"
+	},
+	{
+		"name": "Axolati",
+		"spriteIdle": "Axolati_idle.gif"
+	},
+	{
+		"name": "Radillo",
+		"spriteIdle": "Radillo.png"
+	},
+	{
+		"name": "Punkchirp",
+		"spriteIdle": "Punkchirp.png"
+	},
+	{
+		"name": "Shooga",
+		"spriteIdle": "Shooga_idle.gif"
+	},
+	{
+		"name": "Bildit",
+		"spriteIdle": "Bildit_idle.gif"
+	},
+	{
+		"name": "Kichik",
+		"spriteIdle": "Kichik_idle.gif"
+	}
+]
