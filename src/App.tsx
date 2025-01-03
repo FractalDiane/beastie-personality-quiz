@@ -92,6 +92,8 @@ export default function App() {
 		if (!init) {
 			const savedMuted = localStorage.getItem("muted") === "true";
 			setMuted(savedMuted);
+			const savedVolume = localStorage.getItem("volume");
+			setVolume(savedVolume !== null ? parseFloat(savedVolume) : 0.25);
 			init = true;
 		}
 	}, []);
@@ -159,6 +161,7 @@ export default function App() {
 				cheerAudio!.muted = false;
 				cheerAudio!.play();
 				setPlayedCheerAudio(true);
+				setShowDialogue(true);
 			}, 2800);
 		}
 
@@ -173,6 +176,7 @@ export default function App() {
 			} break;
 
 			case ProgressStage.ResultsDialogue: {
+				setShowDialogue(false);
 				setBgDarkenAnimation("fadein");
 				setCarouselRotationAdd(Math.PI * 8);
 				setCarouselYAdd(500);
@@ -201,7 +205,9 @@ export default function App() {
 	}
 
 	function onChangeVolume(event: React.ChangeEvent<HTMLInputElement>) {
-		setVolume(parseFloat(event.target.value) / 100);
+		const value = parseFloat(event.target.value) / 100;
+		setVolume(value);
+		localStorage.setItem("volume", String(value));
 	}
 
 	function onClickStart(_skip: boolean) {
@@ -351,9 +357,9 @@ export default function App() {
 				elements.push(
 					<Fragment key="carousel">
 						<BeastieCarousel beasties={beastiesFile} selectedIndex={yourBeastieIndex} radiusX={700 + carouselRadiusXAdd} radiusY={150 + carouselRadiusYAdd} rotationAdd={carouselRotationAdd} yAdd={carouselYAdd} show={showCarousel} fadeIn={fadedInBeastie} playCheerAnimation={showCheerAnimation} />
-						<div className="textContainer bottom">
-							<TextBox text={`...a ${yourBeastieName}!`} showBox={false} smallText={true} centerText={true} />
-						</div>
+						{showDialogue ? <div className="textContainer bottom">
+							<TextBox text={`...a @${yourBeastieName}\`!`} showBox={true} smallText={true} centerText={true} />
+						</div> : <></>}
 
 						<audio autoPlay muted id="cheerAudio" preload="auto" src={yourBeastieIndex !== -1 ? `${beastiesFile[yourBeastieIndex].name.toLowerCase()}_cheer${cheerAudioIndex + 1}.flac` : ""} />
 					</Fragment>

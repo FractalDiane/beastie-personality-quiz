@@ -255,6 +255,20 @@ h3, h4 {
 	font-size: min(22pt, 6vw);
 }
 
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.textIndicator {
+	animation: rotate 8s linear infinite;
+}
+
 #choices {
 	position: relative;
 	display: flex;
