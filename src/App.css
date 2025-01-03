@@ -121,6 +121,13 @@ h3, h4 {
 	height: 100vh;
 }
 
+#dialogueAdvance {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 500;
+}
+
 .bmd-button {
 	color: white;
 	background-color: black;
@@ -168,6 +175,7 @@ h3, h4 {
 	position: fixed;
 	bottom: 0;
 	left: 0;
+	z-index: 1000;
 }
 
 .bmd-button.bottom {
@@ -255,18 +263,18 @@ h3, h4 {
 	font-size: min(22pt, 6vw);
 }
 
-@keyframes rotate {
-	from {
-		transform: rotate(0deg);
-	}
-
-	to {
+@keyframes textIndicatorRotate {
+	100% {
 		transform: rotate(360deg);
 	}
 }
 
 .textIndicator {
-	animation: rotate 8s linear infinite;
+	animation: textIndicatorRotate 20s linear infinite;
+	width: min(4vw, 50px);
+	height: min(4vw, 50px);
+	user-select: none;
+	pointer-events: none;
 }
 
 #choices {

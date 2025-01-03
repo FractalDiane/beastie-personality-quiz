@@ -10,7 +10,7 @@ import beastiesFile from './data/beasties.json';
 import TextBox from './TextBox';
 import { Question, Scores, shuffleArray } from './types';
 import Choices from './Choices';
-import NextButton from './NextButton';
+//import NextButton from './NextButton';
 import BeastieCarousel from './BeastieCarousel';
 import Credits from './Credits';
 
@@ -60,6 +60,7 @@ export default function App() {
 	const [progressStage, setProgressStage] = useState(ProgressStage.ClickStart);
 	const [currentDialogue, setCurrentDialogue] = useState(dialogueFile.intro);
 	const [dialogueIndex, setDialogueIndex] = useState(0);
+	const [canAdvanceDialogue, setCanAdvanceDialogue] = useState(false);
 
 	const [questions, setQuestions] = useState(getShuffledQuestionList(questionsFileNotBallin));
 	const [currentQuestion, setCurrentQuestion] = useState<Question>(questions[questions.length - 1]);
@@ -214,11 +215,21 @@ export default function App() {
 		advanceProgress();
 	}
 
+	function onDialogueTextFinished() {
+		setCanAdvanceDialogue(true);
+	}
+
 	function onClickNext() {
-		if (dialogueIndex < currentDialogue.length - 1) {
-			setDialogueIndex(dialogueIndex + 1);
-		} else {
-			advanceProgress();
+		if (showDialogue && canAdvanceDialogue && !showQuestions) {
+			if (dialogueIndex < currentDialogue.length - 1) {
+				setShowDialogue(false);
+				setDialogueIndex(dialogueIndex + 1);
+				setTimeout(() => setShowDialogue(true), 10);
+			} else {
+				advanceProgress();
+			}
+
+			setCanAdvanceDialogue(false);
 		}
 	}
 
@@ -293,10 +304,11 @@ export default function App() {
 				<div className='bmd-background flipped top' />
 			</div>
 			<div id="background-darken" style={{animation: bgDarkenAnimation.length > 0 ? `${bgDarkenAnimation} 1s forwards` : ``}} onAnimationEnd={onFadeAnimationEnd} />
+			<div id="dialogueAdvance" onClick={onClickNext} />
 			<div id="bottomButtonsContainer">
-				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom"><img src={githubLogoImage} /></button></a> : <></>}
-				{progressStage === ProgressStage.ClickStart ? <button className="bmd-button bottom" onClick={() => setCreditsOpen(!creditsOpen)}><img src={creditsButtonImage} /></button> : <></>}
-				<button className="bmd-button bottom" onClick={onClickMute}><img src={muted ? volumeOffImage : volumeOnImage} /></button>
+				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom" title="View on GitHub"><img src={githubLogoImage} /></button></a> : <></>}
+				{progressStage === ProgressStage.ClickStart ? <button className="bmd-button bottom" onClick={() => setCreditsOpen(!creditsOpen)} title="Credits"><img src={creditsButtonImage} /></button> : <></>}
+				<button className="bmd-button bottom" onClick={onClickMute} title="Mute sound"><img src={muted ? volumeOffImage : volumeOnImage} /></button>
 				{isDesktop ? <input type="range" name="musicVolume" min={0} max={50} defaultValue={25} onChange={onChangeVolume} /> : <></>}
 			</div>
 			
@@ -323,8 +335,7 @@ export default function App() {
 				if (showDialogue) {
 					elements.push(
 						<div className="textContainer center" key="centerDialogue">
-							<TextBox text={currentDialogue[dialogueIndex]} showBox={false} smallText={false} centerText={true} />
-							<NextButton onClickCallback={onClickNext} />
+							<TextBox text={currentDialogue[dialogueIndex]} showBox={false} showAdvanceIndicator={true} smallText={false} centerText={true} textFinishedCallback={onDialogueTextFinished} />
 						</div>
 					);
 	
@@ -346,10 +357,10 @@ export default function App() {
 						<Fragment key="questions">
 							<Choices question={currentQuestion} onClickCallback={onClickAnswer} />
 							<div className="textContainer bottom">
-								<TextBox text={currentQuestion.question} showBox={true} smallText={true} centerText={false} />
+								<TextBox text={currentQuestion.question} showBox={true} showAdvanceIndicator={false} smallText={true} centerText={false} textFinishedCallback={onDialogueTextFinished} />
 							</div>
 						</Fragment>
-					)
+					);
 				}
 			} break;
 	
@@ -358,7 +369,7 @@ export default function App() {
 					<Fragment key="carousel">
 						<BeastieCarousel beasties={beastiesFile} selectedIndex={yourBeastieIndex} radiusX={700 + carouselRadiusXAdd} radiusY={150 + carouselRadiusYAdd} rotationAdd={carouselRotationAdd} yAdd={carouselYAdd} show={showCarousel} fadeIn={fadedInBeastie} playCheerAnimation={showCheerAnimation} />
 						{showDialogue ? <div className="textContainer bottom">
-							<TextBox text={`...a @${yourBeastieName}\`!`} showBox={true} smallText={true} centerText={true} />
+							<TextBox text={`...a @${yourBeastieName}\`!`} showBox={true} showAdvanceIndicator={true} smallText={true} centerText={true} textFinishedCallback={onDialogueTextFinished} />
 						</div> : <></>}
 
 						<audio autoPlay muted id="cheerAudio" preload="auto" src={yourBeastieIndex !== -1 ? `${beastiesFile[yourBeastieIndex].name.toLowerCase()}_cheer${cheerAudioIndex + 1}.flac` : ""} />
