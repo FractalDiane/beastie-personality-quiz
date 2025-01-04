@@ -35,7 +35,7 @@
 
 img#logo {
 	margin-top: 16px;
-	max-width: 75vw;
+	max-width: 95vw;
 	pointer-events: none;
 	user-select: none;
 }
@@ -243,7 +243,7 @@ h3, h4 {
 .textBox {
 	color: white;
 	font-family: Go Banana;
-	font-size: min(26pt, 8vw);
+	font-size: min(32pt, 8vw);
 	position: relative;
 	z-index: 1000;
 
@@ -271,8 +271,8 @@ h3, h4 {
 
 .textIndicator {
 	animation: textIndicatorRotate 20s linear infinite;
-	width: min(4vw, 50px);
-	height: min(4vw, 50px);
+	width: min(8vw, 50px);
+	height: min(8vw, 50px);
 	user-select: none;
 	pointer-events: none;
 }

@@ -93,8 +93,7 @@ export default function App() {
 		if (!init) {
 			const savedMuted = localStorage.getItem("muted") === "true";
 			setMuted(savedMuted);
-			const savedVolume = localStorage.getItem("volume");
-			setVolume(savedVolume !== null ? parseFloat(savedVolume) : 0.25);
+			
 			init = true;
 		}
 	}, []);
@@ -205,12 +204,6 @@ export default function App() {
 		}
 	}
 
-	function onChangeVolume(event: React.ChangeEvent<HTMLInputElement>) {
-		const value = parseFloat(event.target.value) / 100;
-		setVolume(value);
-		localStorage.setItem("volume", String(value));
-	}
-
 	function onClickStart(_skip: boolean) {
 		advanceProgress();
 	}
@@ -309,7 +302,6 @@ export default function App() {
 				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom" title="View on GitHub"><img src={githubLogoImage} /></button></a> : <></>}
 				{progressStage === ProgressStage.ClickStart ? <button className="bmd-button bottom" onClick={() => setCreditsOpen(!creditsOpen)} title="Credits"><img src={creditsButtonImage} /></button> : <></>}
 				<button className="bmd-button bottom" onClick={onClickMute} title="Mute sound"><img src={muted ? volumeOffImage : volumeOnImage} /></button>
-				{isDesktop ? <input type="range" name="musicVolume" min={0} max={50} defaultValue={25} onChange={onChangeVolume} /> : <></>}
 			</div>
 			
 			<audio id="backgroundMusic" preload="auto" src={backgroundMusicFile} muted={muted} loop />
