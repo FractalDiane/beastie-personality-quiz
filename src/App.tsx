@@ -7,9 +7,8 @@ import questionsFileBallin from './data/questions_ballin.json';
 import beastiesFile from './data/beasties.json';
 
 import TextBox from './TextBox';
-import { Question, Scores, shuffleArray } from './types';
+import { ButtonType, Question, Scores, shuffleArray } from './types';
 import Choices from './Choices';
-//import NextButton from './NextButton';
 import BeastieCarousel from './BeastieCarousel';
 import Credits from './Credits';
 
@@ -19,6 +18,7 @@ import volumeOnImage from './assets/volume_on.svg';
 import volumeOffImage from './assets/volume_off.svg';
 import githubLogoImage from './assets/github-mark-white.svg';
 import backgroundMusicFile from './assets/music.ogg';
+import BmdButton from './BmdButton';
 
 enum ProgressStage {
 	ClickStart,
@@ -288,8 +288,8 @@ export default function App() {
 			<div id="dialogueAdvance" onClick={onClickNext} />
 			<div id="bottomButtonsContainer">
 				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom" title="View on GitHub"><img src={githubLogoImage} /></button></a> : <></>}
-				{progressStage === ProgressStage.ClickStart ? <button className="bmd-button bottom" onClick={() => setCreditsOpen(!creditsOpen)} title="Credits"><img src={creditsButtonImage} /></button> : <></>}
-				<button className="bmd-button bottom" onClick={onClickMute} title="Mute sound"><img src={muted ? volumeOffImage : volumeOnImage} /></button>
+				{progressStage === ProgressStage.ClickStart ? <BmdButton buttonType={ButtonType.Bottom} onClick={() => setCreditsOpen(!creditsOpen)} title="Credits"><img src={creditsButtonImage} /></BmdButton> : <></>}
+				<BmdButton buttonType={ButtonType.Bottom} onClick={onClickMute} title="Mute sound"><img src={muted ? volumeOffImage : volumeOnImage} /></BmdButton>
 			</div>
 			
 			<audio id="backgroundMusic" preload="auto" src={backgroundMusicFile} muted={muted} loop />
@@ -303,7 +303,7 @@ export default function App() {
 					<Fragment key="startup">
 						<center><img id="logo" src={logoImage} alt="Beastie Personality Quiz" /></center>
 						<div id="startButtonContainer">
-							<div><button className="bmd-button start" onClick={() => onClickStart(false)}>Start</button></div>
+							<div><BmdButton buttonType={ButtonType.Generic} onClick={() => onClickStart(false)}>Start</BmdButton></div>
 						</div>
 					</Fragment>
 				);

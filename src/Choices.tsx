@@ -1,5 +1,6 @@
-import { Question } from "./types";
+import { ButtonType, Question } from "./types";
 import { jsonStringToJSX } from "./TextFunctions";
+import BmdButton from "./BmdButton";
 
 export interface ChoicesProps {
 	question: Question;
@@ -9,9 +10,9 @@ export interface ChoicesProps {
 export default function Choices(props: ChoicesProps) {
 	const result = [];
 	for (let i = 0; i < props.question.answers.length; ++i) {
-		result.push(<center key={i}><button className="bmd-button choice" onClick={() => props.onClickCallback(props.question.answers[i].points)}>
+		result.push(<center key={i}><BmdButton buttonType={ButtonType.Choice} onClick={() => props.onClickCallback(props.question.answers[i].points)}>
 			<div className="choiceText">{jsonStringToJSX(props.question.answers[i].answer, Infinity)}</div>
-		</button><div className="spacer" /></center>);
+		</BmdButton><div className="spacer" /></center>);
 	}
 
 	return <div id="choices">{result}</div>;

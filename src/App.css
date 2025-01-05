@@ -68,6 +68,18 @@ img#logo {
 	}
 }
 
+@keyframes buttonScroll {
+	0% {
+		background-position-x: 0%;
+		background-position-y: 0%;
+	}
+
+	100% {
+		background-position-x: 100%;
+		background-position-y: 100%;
+	}
+}
+
 h2 {
 	font-family: Go Banana;
 	padding-left: 8px;
@@ -131,8 +143,14 @@ h3, h4 {
 
 .bmd-button {
 	color: white;
-	background-color: black;
 	border: 0px;
+
+	background-image: url(./assets/stripes.svg);
+	background-color: #303030;
+	background-blend-mode: multiply;
+	background-size: 20px;
+	animation: buttonScroll linear infinite;
+	animation-duration: 40s;
 
 	--parallelogram-edge: min(50px, 10%);
 	clip-path: polygon(var(--parallelogram-edge) 0, 100% 0, calc(100% - var(--parallelogram-edge)) 100%, 0 100%);
@@ -142,6 +160,11 @@ h3, h4 {
 	font-size: min(20pt, 4vw);
 
 	z-index: 1000;
+}
+
+.bmd-button-arrow {
+	width: 5vw;
+	height: 5vh;
 }
 
 .bmd-button.start {
@@ -158,7 +181,7 @@ h3, h4 {
 }
 
 .bmd-button:hover {
-	background-color: grey;
+	background-color: #606060;
 }
 
 .bmd-button.next {
@@ -186,6 +209,8 @@ h3, h4 {
 .bmd-button.bottom {
 	width: min(10vw, 50px);
 	height: min(10vw, 50px);
+	top: 0;
+	left: 0;
 }
 
 .bmd-button.bottom > img {
@@ -193,6 +218,7 @@ h3, h4 {
 	max-height: 80%;
 	pointer-events: none;
 	user-select: none;
+	fill: white;
 }
 
 .bmd-button.choice {
@@ -203,6 +229,7 @@ h3, h4 {
 .bmd-button.choice > .choiceText {
 	padding-left: 8%;
 	padding-right: 8%;
+	font-size: min(25pt, 5vw);
 }
 
 @keyframes fadein {
@@ -282,20 +309,6 @@ h3, h4 {
 		6% 24.4%,
 		18.75% 10.1%
 	);
-
-	/*clip-path: polygon(
-		50% 4%,
-		18% 7.4%,
-		4.8% 21.4%,
-		1% 51%,
-		6.6% 74.3%,
-		51.3% 95.3%,
-		81.1% 91.1%,
-		93.4% 82.5%,
-		99% 51%,
-		93.5% 24.1%,
-		80.8% 12.1%
-	);*/
 }
 
 .textBox .text {
@@ -320,17 +333,10 @@ h3, h4 {
 	}*/
 }
 
-@keyframes textboxScroll {
-	100% {
-		background-position: 100%;
-	}
-}
-
 .textBoxBackground {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	/*background-color: white;*/
 	background-image: url(./assets/textbox_back_texture.svg);
 	background-repeat: repeat;
 	background-size: 10%;
@@ -348,7 +354,7 @@ h3, h4 {
 		80.8% 12.1%
 	);
 
-	animation: textboxScroll 30s linear infinite;
+	animation: buttonScroll 40s linear infinite;
 	will-change: background-position;
 	transform: translate3d(0, 0, 0);
 }
