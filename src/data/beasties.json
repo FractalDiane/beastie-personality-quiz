@@ -1,82 +1,102 @@
 [
 	{
 		"name": "Collarva",
-		"spriteIdle": "Collarva_idle.gif"
+		"spriteIdle": "Collarva_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Servitt",
-		"spriteIdle": "Servitt_idle.gif"
+		"spriteIdle": "Servitt_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Yueffowl",
-		"spriteIdle": "Yueffowl.png"
+		"spriteIdle": "Yueffowl.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Woollie",
-		"spriteIdle": "Woollie.png"
+		"spriteIdle": "Woollie.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Leobro",
-		"spriteIdle": "Leobro.png"
+		"spriteIdle": "Leobro.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Skibble",
-		"spriteIdle": "Skibble_idle.gif"
+		"spriteIdle": "Skibble_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Sefren",
-		"spriteIdle": "Sefren_idle.gif"
+		"spriteIdle": "Sefren_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Sprecko",
-		"spriteIdle": "Sprecko_idle.gif"
+		"spriteIdle": "Sprecko_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Webbounce",
-		"spriteIdle": "Webbounce.png"
+		"spriteIdle": "Webbounce.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Gullit",
-		"spriteIdle": "Gullit_idle.gif"
+		"spriteIdle": "Gullit_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Merrifly",
-		"spriteIdle": "Merrifly_idle.gif"
+		"spriteIdle": "Merrifly_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Calcroach",
-		"spriteIdle": "Calcroach.png"
+		"spriteIdle": "Calcroach.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Troglum",
-		"spriteIdle": "Troglum.png"
+		"spriteIdle": "Troglum.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Rookee",
-		"spriteIdle": "Rookee_idle.gif"
+		"spriteIdle": "Rookee_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Axolati",
-		"spriteIdle": "Axolati_idle.gif"
+		"spriteIdle": "Axolati_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Radillo",
-		"spriteIdle": "Radillo.png"
+		"spriteIdle": "Radillo.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Punkchirp",
-		"spriteIdle": "Punkchirp.png"
+		"spriteIdle": "Punkchirp.png",
+		"yAdjust": 0
 	},
 	{
 		"name": "Shooga",
-		"spriteIdle": "Shooga_idle.gif"
+		"spriteIdle": "Shooga_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Bildit",
-		"spriteIdle": "Bildit_idle.gif"
+		"spriteIdle": "Bildit_idle.gif",
+		"yAdjust": 0
 	},
 	{
 		"name": "Kichik",
-		"spriteIdle": "Kichik_idle.gif"
+		"spriteIdle": "Kichik_idle.gif",
+		"yAdjust": 0
 	}
 ]

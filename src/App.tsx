@@ -360,7 +360,7 @@ export default function App() {
 					<Fragment key="carousel">
 						<BeastieCarousel beasties={beastiesFile} selectedIndex={yourBeastieIndex} radiusX={700 + carouselRadiusXAdd} radiusY={150 + carouselRadiusYAdd} rotationAdd={carouselRotationAdd} yAdd={carouselYAdd} show={showCarousel} fadeIn={fadedInBeastie} playCheerAnimation={showCheerAnimation} />
 						{showDialogue ? <div className="textContainer bottom">
-							<TextBox text={`...a${startsWithVowel(yourBeastieName) ? "n" : ""} @${yourBeastieName}\`!`} boxType={TextBoxType.Faded} showAdvanceIndicator={true} smallText={true} centerText={true} textFinishedCallback={onDialogueTextFinished} />
+							<TextBox text={`...a${startsWithVowel(yourBeastieName) ? "n" : ""} ^${yourBeastieName}\`!`} boxType={TextBoxType.Faded} showAdvanceIndicator={true} smallText={true} centerText={true} textFinishedCallback={onDialogueTextFinished} />
 						</div> : <></>}
 
 						<audio autoPlay muted id="cheerAudio" preload="auto" src={yourBeastieIndex !== -1 ? `${beastiesFile[yourBeastieIndex].name.toLowerCase()}_cheer${cheerAudioIndex + 1}.flac` : ""} />
