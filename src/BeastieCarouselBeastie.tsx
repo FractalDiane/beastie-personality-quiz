@@ -35,7 +35,7 @@ export default function BeastieCarouselBeastie(props: BeastieCarouselBeastieProp
 	const angleDiff = Math.abs(Math.PI - angleAdjusted);
 
 	return <><img className="beastieCarouselBeastie" src={props.playCheerAnimation && props.isSelected ? `${props.beastie.name}_Cheer.png` : props.beastie.spriteIdle} style={{
-		transform: `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${clamp(angleDiff / Math.PI * 1, 0.3, 1)}) translateY(${props.beastie.yAdjust}px) translate3d(0, 0, 0)`,
+		transform: `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${clamp(angleDiff / Math.PI * 1, 0.3, 1)}) translateY(-100px) translateY(${props.beastie.yAdjust}px) translate3d(0, 0, 0)`,
 		zIndex: 500 + Math.round(y),
 		filter: `brightness(0)`,
 		animation: `${props.isSelected && props.fadeIn ? "beastie-fadein 2s forwards linear" : ""}`,

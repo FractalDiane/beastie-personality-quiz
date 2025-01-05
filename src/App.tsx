@@ -280,10 +280,10 @@ export default function App() {
 				{`body { margin-top: 0px; margin-left: 0px; overflow-y: ${creditsOpen ? "scroll" : "hidden"}}`}
 			</style>
 			<div id="background">
-				<div className='bmd-background' />
-				<div className='bmd-background top' />
-				<div className='bmd-background flipped' />
-				<div className='bmd-background flipped top' />
+				<div className="bmd-background" />
+				<div className="bmd-background top" />
+				<div className="bmd-background flipped" />
+				<div className="bmd-background flipped top" />
 			</div>
 			<div id="background-darken" style={{animation: bgDarkenAnimation.length > 0 ? `${bgDarkenAnimation} 1s forwards` : ``}} onAnimationEnd={onFadeAnimationEnd} />
 			<div id="dialogueAdvance" onClick={() => onClickNext(false)} onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => { if (event.key === " ") { onClickNext(false); }}} />
