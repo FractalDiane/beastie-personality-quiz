@@ -184,8 +184,8 @@ h3, h4 {
 }
 
 .bmd-button.bottom {
-	width: min(8vw, 50px);
-	height: min(8vw, 50px);
+	width: min(10vw, 50px);
+	height: min(10vw, 50px);
 }
 
 .bmd-button.bottom > img {
@@ -196,8 +196,13 @@ h3, h4 {
 }
 
 .bmd-button.choice {
-	min-width: 50vw;
-	min-height: 10vh;
+	width: 50vw;
+	height: 10vh;
+}
+
+.bmd-button.choice > .choiceText {
+	padding-left: 8%;
+	padding-right: 8%;
 }
 
 @keyframes fadein {
@@ -367,7 +372,7 @@ h3, h4 {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	padding-top: 10vh;
+	padding-top: 5vh;
 	z-index: 1000;
 }
 

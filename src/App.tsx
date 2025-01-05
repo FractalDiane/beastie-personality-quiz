@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import './App.css';
 
 import dialogueFile from './data/dialogue.json';
