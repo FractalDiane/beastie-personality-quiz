@@ -30,3 +30,20 @@ export function jsonStringToJSX(str: string, currentCharIndex: number): JSX.Elem
 
 	return result;
 }
+
+export function startsWithVowel(text: string): boolean {
+	if (text.length == 0) {
+		return false;
+	}
+
+	switch (text[0].toLowerCase()) {
+		case 'a':
+		case 'e':
+		case 'i':
+		case 'o':
+		case 'u':
+			return true;
+		default:
+			return false;
+	}
+}

@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { jsonStringToJSX } from "./TextFunctions";
+import { TextBoxType } from "./types";
 
 import ballshroomImage from "./assets/ballshroom.svg";
+import fadedBoxImage from "./assets/box_blur.png";
 
 export interface TextBoxProps {
 	text: string;
 	showAdvanceIndicator: boolean;
 	textFinishedCallback: () => void;
 	centerText: boolean;
-	showBox: boolean;
+	boxType: TextBoxType;
 	smallText: boolean;
 }
 
@@ -42,10 +44,10 @@ export default function TextBox(props: TextBoxProps) {
 	const text = jsonStringToJSX(props.text, charIndex);
 	
 	return <>
-		{ props.showBox ? <div className="textBoxBackground" /> : <></> }
-		<div className={`textBox ${props.showBox ? "polygon" : ""}`} style={{
-			backgroundColor: `rgba(0, 0, 0, ${props.showBox ? 1 : 0})`,
-			border: `1px solid rgba(255, 255, 255, ${props.showBox ? 1 : 0})`,
+		{ props.boxType === TextBoxType.Box ? <div className="textBoxBackground" /> : <></> }
+		<img src={fadedBoxImage} style={{opacity: 0, position: `absolute`}} />
+		<div className={`textBox ${props.boxType === TextBoxType.Box ? "polygon" : props.boxType === TextBoxType.Faded ? "faded" : ""}`} style={{
+			backgroundColor: `rgba(0, 0, 0, ${props.boxType === TextBoxType.Box ? 1 : props.boxType === TextBoxType.Faded ? 0 : 0})`,
 		}}>
 		<div className={`text ${props.smallText ? "small" : ""}`} style={{textAlign: `${props.centerText ? "center" : "left"}`}}>{text}</div>
 		<center><img className="textIndicator" src={ballshroomImage} style={{opacity: props.showAdvanceIndicator && charIndex == props.text.length ? 1 : 0}} /></center>
