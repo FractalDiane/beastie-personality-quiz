@@ -41,7 +41,9 @@ export default function TextBox(props: TextBoxProps) {
 	const charIndex = useTypewriter(props.text, 12);
 	const text = jsonStringToJSX(props.text, charIndex);
 	
-	return <><div className="textBox" style={{
+	return <>
+		{ props.showBox ? <div className="textBoxBackground" /> : <></> }
+		<div className={`textBox ${props.showBox ? "polygon" : ""}`} style={{
 			backgroundColor: `rgba(0, 0, 0, ${props.showBox ? 1 : 0})`,
 			border: `1px solid rgba(255, 255, 255, ${props.showBox ? 1 : 0})`,
 		}}>

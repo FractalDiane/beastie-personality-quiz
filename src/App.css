@@ -92,8 +92,9 @@ h3, h4 {
 	width: 100vw;
 	background-repeat: repeat-y;
 
-	/*animation: bgscroll 10s linear infinite;
-	will-change: background-position-y;*/
+	animation: bgscroll 18s linear infinite;
+	will-change: background-position-y;
+	transform: translate3d(0, 0, 0);
 }
 
 .bmd-background.top {
@@ -131,6 +132,10 @@ h3, h4 {
 .bmd-button {
 	color: white;
 	background-color: black;
+	border: 0px;
+
+	--parallelogram-edge: min(50px, 10%);
+	clip-path: polygon(var(--parallelogram-edge) 0, 100% 0, calc(100% - var(--parallelogram-edge)) 100%, 0 100%);
 
 	position: relative;
 	font-family: Go Banana;
@@ -173,8 +178,8 @@ h3, h4 {
 
 #bottomButtonsContainer {
 	position: fixed;
-	bottom: 0;
-	left: 0;
+	bottom: 5px;
+	left: 5px;
 	z-index: 1000;
 }
 
@@ -184,8 +189,8 @@ h3, h4 {
 }
 
 .bmd-button.bottom > img {
-	max-width: 90%;
-	max-height: 90%;
+	max-width: 80%;
+	max-height: 80%;
 	pointer-events: none;
 	user-select: none;
 }
@@ -237,7 +242,11 @@ h3, h4 {
 }
 
 .textContainer.bottom {
-	top: 80vh;
+	--textbox-width: min(80vw, 1000px);
+	--textbox-height: min(30vh, 250px);
+	bottom: 5vh;
+	width: var(--textbox-width);
+	height: var(--textbox-height);
 }
 
 .textBox {
@@ -245,10 +254,43 @@ h3, h4 {
 	font-family: Go Banana;
 	font-size: min(32pt, 8vw);
 	position: relative;
+	width: 100%;
+	height: 100%;
 	z-index: 1000;
 
-	width: max(50vw, 240px);
-	min-height: 8vh;
+	/* x: 0%, 6%, 18.75%, 50%, 81.25%, 94%, 100% */
+	/* y: 0%, 10.1%, 24.4%, 50%, 75.6%, 89.9%, 100% */
+	
+}
+
+.textBox.polygon {
+	clip-path: polygon(
+		50% 0%,
+		81.25% 10.1%,
+		94% 24.4%,
+		100% 50%,
+		94% 75.6%,
+		81.25% 89.9%,
+		50% 100%,
+		18.75% 89.9%,
+		6% 75.6%, 0% 50%,
+		6% 24.4%,
+		18.75% 10.1%
+	);
+
+	/*clip-path: polygon(
+		50% 4%,
+		18% 7.4%,
+		4.8% 21.4%,
+		1% 51%,
+		6.6% 74.3%,
+		51.3% 95.3%,
+		81.1% 91.1%,
+		93.4% 82.5%,
+		99% 51%,
+		93.5% 24.1%,
+		80.8% 12.1%
+	);*/
 }
 
 .textBox .text {
@@ -257,11 +299,55 @@ h3, h4 {
 }
 
 .textBox .text.small {
-	padding: 8px;
+	padding-left: calc(var(--textbox-width) * 0.1);
+	padding-right: calc(var(--textbox-width) * 0.1);
+	padding-top: calc(var(--textbox-height) * 0.22);
 	user-select: none;
 
-	font-size: min(22pt, 6vw);
+	font-size: min(28pt, 5vw);
+
+	/*@media (min-width: 640px) {
+		font-size: min(26pt, 4vw);
+	}
+
+	@media (min-width: 1024px) {
+		font-size: min(28pt, 5vw);
+	}*/
 }
+
+@keyframes textboxScroll {
+	100% {
+		background-position: 100%;
+	}
+}
+
+.textBoxBackground {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/*background-color: white;*/
+	background-image: url(./assets/textbox_back_texture.svg);
+	background-repeat: repeat;
+	background-size: 10%;
+	clip-path: polygon(
+		50% 4%,
+		18% 7.4%,
+		4.8% 21.4%,
+		1% 51%,
+		6.6% 74.3%,
+		51.3% 95.3%,
+		81.1% 91.1%,
+		93.4% 82.5%,
+		99% 51%,
+		93.5% 24.1%,
+		80.8% 12.1%
+	);
+
+	animation: textboxScroll 30s linear infinite;
+	will-change: background-position;
+	transform: translate3d(0, 0, 0);
+}
+
 
 @keyframes textIndicatorRotate {
 	100% {

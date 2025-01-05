@@ -45,12 +45,7 @@ function lerp(from: number, to: number, alpha: number): number {
 let init = false;
 
 export default function App() {
-	const isDesktop = useMediaQuery({
-		query: `(min-width: 800px)`,
-	});
-
 	const [muted, setMuted] = useState(false);
-	const [volume, setVolume] = useState(0.25);
 	const [creditsOpen, setCreditsOpen] = useState(false);
 
 	const [bgDarkenAnimation, setBgDarkenAnimation] = useState("");
@@ -81,13 +76,6 @@ export default function App() {
 
 	const cheerAudio = document.getElementById("cheerAudio") as HTMLAudioElement | null;
 	const backgroundMusic = document.getElementById("backgroundMusic") as HTMLAudioElement | null;
-	if (backgroundMusic !== null) {
-		backgroundMusic.volume = muted ? 0.0 : volume;
-	}
-
-	if (cheerAudio !== null) {
-		cheerAudio.volume = muted ? 0.0 : volume * 1.2;
-	}
 
 	useEffect(() => {
 		if (!init) {
@@ -197,11 +185,12 @@ export default function App() {
 
 	function onClickMute() {
 		const newMuted = !muted;
-		setMuted(newMuted);
 		localStorage.setItem("muted", String(newMuted));
 		if (!newMuted) {
 			backgroundMusic!.currentTime = 0;
 		}
+
+		setTimeout(() => setMuted(newMuted), 50);
 	}
 
 	function onClickStart(_skip: boolean) {
