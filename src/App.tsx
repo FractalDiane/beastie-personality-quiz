@@ -46,6 +46,7 @@ let init = false;
 
 export default function App() {
 	const [muted, setMuted] = useState(false);
+	const [volume, setVolume] = useState(0.5);
 	const [creditsOpen, setCreditsOpen] = useState(false);
 
 	const [bgDarkenAnimation, setBgDarkenAnimation] = useState("");
@@ -75,12 +76,25 @@ export default function App() {
 	const [playedCheerAudio, setPlayedCheerAudio] = useState(false);
 
 	const cheerAudio = document.getElementById("cheerAudio") as HTMLAudioElement | null;
+	if (cheerAudio !== null) {
+		cheerAudio.volume = volume;
+	}
+
 	const backgroundMusic = document.getElementById("backgroundMusic") as HTMLAudioElement | null;
+	if (backgroundMusic !== null) {
+		backgroundMusic.volume = volume;
+		const slider = document.getElementById("volumeSlider") as HTMLInputElement | null;
+		if (slider !== null) {
+			slider.value = String(volume * 100);
+		}
+	}
 
 	useEffect(() => {
 		if (!init) {
 			const savedMuted = localStorage.getItem("muted") === "true";
 			setMuted(savedMuted);
+			const savedVolume = localStorage.getItem("volume");
+			setVolume(savedVolume !== null ? parseFloat(savedVolume) : 0.5);
 			
 			init = true;
 		}
@@ -193,6 +207,12 @@ export default function App() {
 		setTimeout(() => setMuted(newMuted), 50);
 	}
 
+	function onChangeVolume(event: React.ChangeEvent<HTMLInputElement>) {
+		const newVolume = parseFloat(event.target.value) / 100;
+		localStorage.setItem("volume", String(newVolume));
+		setVolume(newVolume);
+	}
+
 	function onClickStart(_skip: boolean) {
 		advanceProgress();
 	}
@@ -291,6 +311,7 @@ export default function App() {
 				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom" title="View on GitHub"><img src={githubLogoImage} /></button></a> : <></>}
 				{progressStage === ProgressStage.ClickStart ? <BmdButton buttonType={ButtonType.Bottom} onClick={() => setCreditsOpen(!creditsOpen)} title="Credits"><img src={creditsButtonImage} /></BmdButton> : <></>}
 				<BmdButton buttonType={ButtonType.Bottom} onClick={onClickMute} title="Mute sound"><img src={muted ? volumeOffImage : volumeOnImage} /></BmdButton>
+				<input type="range" id="volumeSlider" min={0} max={100} defaultValue={50} onChange={onChangeVolume} ></input>
 			</div>
 			
 			<audio id="backgroundMusic" preload="auto" src={backgroundMusicFile} muted={muted} loop />
