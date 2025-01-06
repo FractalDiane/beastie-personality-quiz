@@ -45,7 +45,7 @@ export default function TextBox(props: TextBoxProps) {
 	
 	return <>
 		{ props.boxType === TextBoxType.Box ? <div className="textBoxBackground" /> : <></> }
-		<img src={fadedBoxImage} style={{opacity: 0, position: `absolute`}} />
+		<img src={fadedBoxImage} style={{opacity: 0, position: `absolute`, width: `1px`, height: `1px` /* THIS IS HORRIBLE */}} />
 		<div className={`textBox ${props.boxType === TextBoxType.Box ? "polygon" : props.boxType === TextBoxType.Faded ? "faded" : ""}`} style={{
 			backgroundColor: `rgba(0, 0, 0, ${props.boxType === TextBoxType.Box ? 1 : props.boxType === TextBoxType.Faded ? 0 : 0})`,
 		}}>
