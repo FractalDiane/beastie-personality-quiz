@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import './App.css';
 
 import dialogueFile from './data/dialogue.json';
@@ -74,6 +75,11 @@ export default function App() {
 	const [showCheerAnimation, setShowCheerAnimation] = useState(false);
 	const [cheerAudioIndex, setCheerAudioIndex] = useState(0);
 	const [playedCheerAudio, setPlayedCheerAudio] = useState(false);
+
+	const showVolumeSlider = useMediaQuery({
+		orientation: `landscape`,
+		minWidth: `800px`,
+	});
 
 	const cheerAudio = document.getElementById("cheerAudio") as HTMLAudioElement | null;
 	if (cheerAudio !== null) {
@@ -311,7 +317,7 @@ export default function App() {
 				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom" title="View on GitHub"><img src={githubLogoImage} /></button></a> : <></>}
 				{progressStage === ProgressStage.ClickStart ? <BmdButton buttonType={ButtonType.Bottom} onClick={() => setCreditsOpen(!creditsOpen)} title="Credits"><img src={creditsButtonImage} /></BmdButton> : <></>}
 				<BmdButton buttonType={ButtonType.Bottom} onClick={onClickMute} title="Mute sound"><img src={muted ? volumeOffImage : volumeOnImage} /></BmdButton>
-				<input type="range" id="volumeSlider" min={0} max={100} defaultValue={50} onChange={onChangeVolume} ></input>
+				{showVolumeSlider ? <input type="range" id="volumeSlider" min={0} max={100} defaultValue={50} onChange={onChangeVolume} ></input> : <></>}
 			</div>
 			
 			<audio id="backgroundMusic" preload="auto" src={backgroundMusicFile} muted={muted} loop />
