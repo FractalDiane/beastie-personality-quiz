@@ -131,6 +131,10 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]:focus::-webkit-slider-thumb {   
 	background-color: #aaaaaa;
 }
+
+input[type="range"]:hover::-webkit-slider-thumb {   
+	background-color: #aaaaaa;
+}
  
 input[type="range"]::-moz-range-track {
 	background-color: #222222;
@@ -149,6 +153,10 @@ input[type="range"]::-moz-range-thumb {
 }
  
 input[type="range"]:focus::-moz-range-thumb {
+	background-color: #aaaaaa;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
 	background-color: #aaaaaa;
 }
 

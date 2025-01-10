@@ -76,6 +76,8 @@ export default function App() {
 	const [cheerAudioIndex, setCheerAudioIndex] = useState(0);
 	const [playedCheerAudio, setPlayedCheerAudio] = useState(false);
 
+	const [showFinishButton, setShowFinishButton] = useState(false);
+
 	const showVolumeSlider = useMediaQuery({
 		orientation: `landscape`,
 		minWidth: `800px`,
@@ -166,7 +168,7 @@ export default function App() {
 		if (fadedInBeastie && !playedCheerAudio) {
 			interval = setTimeout(() => {
 				setShowCheerAnimation(true);
-				cheerAudio!.muted = false;
+				cheerAudio!.muted = muted;
 				cheerAudio!.play();
 				setPlayedCheerAudio(true);
 				setShowDialogue(true);
@@ -197,7 +199,13 @@ export default function App() {
 			case ProgressStage.NotBallinQuestions:
 			case ProgressStage.BallinQuestions: {
 				setBgDarkenAnimation("fadeout");
-			}
+			} break;
+
+			case ProgressStage.ShowBeastie: {
+				setShowDialogue(false);
+				setTimeout(() => setShowFinishButton(true), 2000);
+				return;
+			} break;
 		}
 
 		setProgressStage(progressStage + 1);
@@ -388,6 +396,10 @@ export default function App() {
 						<BeastieCarousel beasties={beastiesFile} selectedIndex={yourBeastieIndex} radiusX={700 + carouselRadiusXAdd} radiusY={150 + carouselRadiusYAdd} rotationAdd={carouselRotationAdd} yAdd={carouselYAdd} show={showCarousel} fadeIn={fadedInBeastie} playCheerAnimation={showCheerAnimation} />
 						{showDialogue ? <div className="textContainer bottom">
 							<TextBox text={`...a${startsWithVowel(yourBeastieName) ? "n" : ""} ^${yourBeastieName}\`!`} boxType={TextBoxType.Faded} showAdvanceIndicator={true} smallText={true} centerText={true} textFinishedCallback={onDialogueTextFinished} />
+						</div> : <></>}
+
+						{showFinishButton ? <div id="skipButtonContainer">
+							<BmdButton buttonType={ButtonType.Generic} onClick={() => onClickNext(true)}>Restart</BmdButton>
 						</div> : <></>}
 
 						<audio autoPlay muted id="cheerAudio" preload="auto" src={yourBeastieIndex !== -1 ? `${beastiesFile[yourBeastieIndex].name.toLowerCase()}_cheer${cheerAudioIndex + 1}.flac` : ""} />
