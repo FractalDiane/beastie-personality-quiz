@@ -323,6 +323,16 @@ input[type="range"]:hover::-moz-range-thumb {
 	}
 }
 
+@keyframes fadeinFull {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
 @keyframes beastie-fadein {
 	from {
 		filter: brightness(0);
@@ -474,4 +484,33 @@ input[type="range"]:hover::-moz-range-thumb {
 	position: absolute;
 	top: 50vh;
 	left: 50vw;
+}
+
+.resultTextContainer {
+	position: absolute;
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	opacity: 0;
+}
+
+.resultText {
+	position: relative;
+	flex-grow: 0;
+	margin-top: 10vh;
+}
+
+.resultText .top {
+	font-family: Go Banana;
+	font-size: 42pt;
+}
+
+.resultText .bottom {
+	font-family: Sports Jersey;
+	font-size: 68pt;
+}
+
+.spacerFlex {
+	position: relative;
+	flex-grow: 1;
 }

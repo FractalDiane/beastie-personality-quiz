@@ -21,6 +21,7 @@ import githubLogoImage from './assets/github-mark-white.svg';
 import backgroundMusicFile from './assets/music.ogg';
 import BmdButton from './BmdButton';
 import { startsWithVowel } from './TextFunctions';
+import ResultText from './ResultText';
 
 enum ProgressStage {
 	ClickStart,
@@ -62,6 +63,7 @@ export default function App() {
 	const [questions, setQuestions] = useState(getShuffledQuestionList(questionsFileNotBallin));
 	const [currentQuestion, setCurrentQuestion] = useState<Question>(questions[questions.length - 1]);
 	const [scores, setScores] = useState(new Scores());
+	const [yourVibe, setYourVibe] = useState("");
 	const [yourBeastieName, setYourBeastieName] = useState("");
 	const [yourBeastieIndex, setYourBeastieIndex] = useState(-1);
 
@@ -76,6 +78,7 @@ export default function App() {
 	const [cheerAudioIndex, setCheerAudioIndex] = useState(0);
 	const [playedCheerAudio, setPlayedCheerAudio] = useState(false);
 
+	const [fadeinResultsText, setFadeinResultsText] = useState(false);
 	const [showFinishButton, setShowFinishButton] = useState(false);
 
 	const showVolumeSlider = useMediaQuery({
@@ -203,6 +206,7 @@ export default function App() {
 
 			case ProgressStage.ShowBeastie: {
 				setShowDialogue(false);
+				setFadeinResultsText(true);
 				setTimeout(() => setShowFinishButton(true), 2000);
 				return;
 			} break;
@@ -301,6 +305,10 @@ export default function App() {
 
 				const results = scores.getTopScoreResult();
 				setCurrentDialogue(results.dialogue);
+
+				const vibeStringFull = results.dialogue[1].split(" ")[1];
+				setYourVibe(vibeStringFull.substring(1, vibeStringFull.length - 1));
+
 				setYourBeastieName(beastiesFile[results.beastieIndex].name);
 				setYourBeastieIndex(results.beastieIndex);
 				setCheerAudioIndex(Math.floor(Math.random() * 4));
@@ -393,6 +401,14 @@ export default function App() {
 			case ProgressStage.ShowBeastie: {
 				elements.push(
 					<Fragment key="carousel">
+						<div className="resultTextContainer" style={{animation: `${fadeinResultsText ? "fadeinFull 2s forwards" : ""}`}}>
+							<div className="spacerFlex" />
+							<ResultText subtext="Your vibe is" text={yourVibe.toUpperCase()} />
+							<div className="spacerFlex" />
+							<ResultText subtext="Your Beastie form is" text={yourBeastieName.toUpperCase()} />
+							<div className="spacerFlex" />
+						</div>
+
 						<BeastieCarousel beasties={beastiesFile} selectedIndex={yourBeastieIndex} radiusX={700 + carouselRadiusXAdd} radiusY={150 + carouselRadiusYAdd} rotationAdd={carouselRotationAdd} yAdd={carouselYAdd} show={showCarousel} fadeIn={fadedInBeastie} playCheerAnimation={showCheerAnimation} />
 						{showDialogue ? <div className="textContainer bottom">
 							<TextBox text={`...a${startsWithVowel(yourBeastieName) ? "n" : ""} ^${yourBeastieName}\`!`} boxType={TextBoxType.Faded} showAdvanceIndicator={true} smallText={true} centerText={true} textFinishedCallback={onDialogueTextFinished} />
