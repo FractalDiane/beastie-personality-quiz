@@ -272,6 +272,29 @@ export default function App() {
 		}
 	}
 
+	function onClickRestart() {
+		setProgressStage(ProgressStage.ClickStart);
+		setScores(new Scores());
+		setCurrentDialogue(dialogueFile.intro);
+		setDialogueIndex(0);
+
+		const newQuestions = getShuffledQuestionList(questionsFileNotBallin);
+		setQuestions(newQuestions);
+		setCurrentQuestion(newQuestions[newQuestions.length - 1]);
+		
+		setShowCheerAnimation(false);
+		setFadedInBeastie(false);
+		setPlayedCheerAudio(false);
+		setFadeinResultsText(false);
+		setShowFinishButton(false);
+
+		setShowCarousel(false);
+		setCarouselRotationAdd(0);
+		setCarouselYAdd(501);
+		setCarouselRadiusXAdd(0);
+		setCarouselRadiusYAdd(0);
+	}
+
 	function onFadeAnimationEnd(_animation: React.AnimationEvent<HTMLDivElement>) {
 		switch (progressStage) {
 			case ProgressStage.IntroDialogue: {
@@ -415,7 +438,7 @@ export default function App() {
 						</div> : <></>}
 
 						{showFinishButton ? <div id="skipButtonContainer">
-							<BmdButton buttonType={ButtonType.Generic} onClick={() => onClickNext(true)}>Restart</BmdButton>
+							<BmdButton buttonType={ButtonType.Generic} onClick={onClickRestart}>Restart</BmdButton>
 						</div> : <></>}
 
 						<audio autoPlay muted id="cheerAudio" preload="auto" src={yourBeastieIndex !== -1 ? `${beastiesFile[yourBeastieIndex].name.toLowerCase()}_cheer${cheerAudioIndex + 1}.flac` : ""} />
