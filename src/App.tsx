@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import { isMobile } from 'react-device-detect';
 import './App.css';
 
 import dialogueFile from './data/dialogue.json';
@@ -81,10 +81,7 @@ export default function App() {
 	const [fadeinResultsText, setFadeinResultsText] = useState(false);
 	const [showFinishButton, setShowFinishButton] = useState(false);
 
-	const showVolumeSlider = useMediaQuery({
-		orientation: `landscape`,
-		minWidth: `800px`,
-	});
+	const showVolumeSlider = !isMobile;
 
 	const cheerAudio = document.getElementById("cheerAudio") as HTMLAudioElement | null;
 	if (cheerAudio !== null) {

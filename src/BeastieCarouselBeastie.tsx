@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export interface Beastie {
 	name: string;
 	spriteIdle: string;
@@ -28,6 +30,17 @@ function getClosest360(angle: number): number {
 }
 
 export default function BeastieCarouselBeastie(props: BeastieCarouselBeastieProps) {
+	const [beastieScale, setBeastieScale] = useState(1.0);
+
+	useEffect(() => {
+		function onResize() {
+			setBeastieScale(Math.min(window.innerWidth / 2304, window.innerHeight / 1173));
+		}
+
+		window.addEventListener("resize", onResize);
+		return () => window.removeEventListener("resize", onResize);
+	}, []);
+
 	const angleOffset = props.angle + Math.PI * 0.5;
 	const x = props.radiusX * Math.cos(angleOffset);
 	const y = props.radiusY * Math.sin(angleOffset);

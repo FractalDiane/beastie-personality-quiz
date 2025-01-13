@@ -217,6 +217,7 @@ input[type="range"]:hover::-moz-range-thumb {
 	background-size: 20px;
 	animation: buttonScroll linear infinite;
 	animation-duration: 40s;
+	transform: translate3d(0, 0, 0);
 
 	--parallelogram-edge: min(50px, 10%);
 	clip-path: polygon(var(--parallelogram-edge) 0, 100% 0, calc(100% - var(--parallelogram-edge)) 100%, 0 100%);
@@ -250,21 +251,6 @@ input[type="range"]:hover::-moz-range-thumb {
 	background-color: #606060;
 }
 
-.bmd-button.next {
-	left: 50%;
-	transform: translateX(-50%);
-
-	width: min(12vw, 80px);
-	height: min(12vw, 80px);
-}
-
-.bmd-button.next > img {
-	scale: 70%;
-	max-width: 100%;
-	pointer-events: none;
-	user-select: none;
-}
-
 #bottomButtonsContainer {
 	position: fixed;
 	bottom: 5px;
@@ -280,8 +266,8 @@ input[type="range"]:hover::-moz-range-thumb {
 }
 
 .bmd-button.bottom > img {
-	max-width: 80%;
-	max-height: 80%;
+	position: relative;
+	width: 80%;
 	pointer-events: none;
 	user-select: none;
 	fill: white;
@@ -300,7 +286,7 @@ input[type="range"]:hover::-moz-range-thumb {
 .bmd-button.choice > .choiceText {
 	padding-left: 8%;
 	padding-right: 8%;
-	font-size: min(25pt, 5vw);
+	font-size: min(25pt, min(4vw, 4vh));
 }
 
 @keyframes fadein {
@@ -475,6 +461,8 @@ input[type="range"]:hover::-moz-range-thumb {
 
 .beastieCarousel {
 	position: relative;
+	width: 100vw;
+	height: 100vh;
 }
 
 .beastieCarouselBeastie {
@@ -502,12 +490,12 @@ input[type="range"]:hover::-moz-range-thumb {
 
 .resultText .top {
 	font-family: Go Banana;
-	font-size: 42pt;
+	font-size: min(42pt, 6vw);
 }
 
 .resultText .bottom {
 	font-family: Sports Jersey;
-	font-size: 68pt;
+	font-size: min(68pt, 10vw);
 }
 
 .spacerFlex {
