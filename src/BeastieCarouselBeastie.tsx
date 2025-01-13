@@ -30,7 +30,7 @@ function getClosest360(angle: number): number {
 }
 
 export default function BeastieCarouselBeastie(props: BeastieCarouselBeastieProps) {
-	const [beastieScale, setBeastieScale] = useState(1.0);
+	const [_beastieScale, setBeastieScale] = useState(1.0);
 
 	useEffect(() => {
 		function onResize() {

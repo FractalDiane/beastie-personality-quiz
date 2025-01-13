@@ -80,6 +80,11 @@ img#logo {
 	}
 }
 
+#root {
+	height: 100vh;
+	width: 100vw;
+}
+
 h2 {
 	font-family: Go Banana;
 	padding-left: 8px;
@@ -252,7 +257,7 @@ input[type="range"]:hover::-moz-range-thumb {
 }
 
 #bottomButtonsContainer {
-	position: fixed;
+	position: absolute;
 	bottom: 5px;
 	left: 5px;
 	z-index: 1000;
@@ -286,7 +291,8 @@ input[type="range"]:hover::-moz-range-thumb {
 .bmd-button.choice > .choiceText {
 	padding-left: 8%;
 	padding-right: 8%;
-	font-size: min(25pt, min(4vw, 4vh));
+	/*font-size: min(25pt, min(4vw, 4vh));*/
+	font-size: 0.8em;
 }
 
 @keyframes fadein {
@@ -342,7 +348,7 @@ input[type="range"]:hover::-moz-range-thumb {
 
 .textContainer.bottom {
 	--textbox-width: min(80vw, 1000px);
-	--textbox-height: min(30vh, 250px);
+	--textbox-height: min(25vh, 250px);
 	bottom: 5vh;
 	width: var(--textbox-width);
 	height: var(--textbox-height);
