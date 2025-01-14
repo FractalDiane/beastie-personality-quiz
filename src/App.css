@@ -83,12 +83,13 @@ img#logo {
 body {
 	height: 100vh;
 	width: 100vw;
+	margin-top: 0px;
+	margin-left: 0px;
 }
 
 #root {
-	height: 100vh;
-	width: 100vw;
 	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 h2 {
@@ -263,7 +264,7 @@ input[type="range"]:hover::-moz-range-thumb {
 }
 
 #bottomButtonsContainer {
-	position: absolute;
+	position: fixed;
 	bottom: 5px;
 	left: 5px;
 	z-index: 1000;
@@ -478,6 +479,7 @@ input[type="range"]:hover::-moz-range-thumb {
 	position: relative;
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
 }
 
 .beastieCarouselBeastie {
