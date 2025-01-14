@@ -294,7 +294,8 @@ input[type="range"]:hover::-moz-range-thumb {
 	padding-right: 8%;
 	
 	/*font-size: min(25pt, min(4vw, 4vh));*/
-	font-size: 3.2vmin;
+	/*font-size: 3.2vmin;*/
+	font-size: 100%;
 }
 
 @keyframes fadein {
