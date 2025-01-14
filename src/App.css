@@ -298,10 +298,10 @@ input[type="range"]:hover::-moz-range-thumb {
 .bmd-button.choice > .choiceText {
 	padding-left: 8%;
 	padding-right: 8%;
-	
-	/*font-size: min(25pt, min(4vw, 4vh));*/
-	/*font-size: 3.2vmin;*/
-	/*font-size: max(100%, 2vw);*/
+
+	@media (max-width: 420px) {
+		font-size: max(90%, min(32pt, 2vw));
+	}
 }
 
 @keyframes fadein {
@@ -366,16 +366,11 @@ input[type="range"]:hover::-moz-range-thumb {
 .textBox {
 	color: white;
 	font-family: Go Banana;
-	/*font-size: min(32pt, 8vw);*/
-	font-size: max(100%, min(32pt, 8vw));
+	font-size: max(100%, min(28pt, 3vw));
 	position: relative;
 	width: 100%;
 	height: 100%;
 	z-index: 1000;
-
-	/* x: 0%, 6%, 18.75%, 50%, 81.25%, 94%, 100% */
-	/* y: 0%, 10.1%, 24.4%, 50%, 75.6%, 89.9%, 100% */
-	
 }
 
 .textBox.polygon {
@@ -400,9 +395,10 @@ input[type="range"]:hover::-moz-range-thumb {
 	background-repeat: no-repeat;
 }
 
-.textBox .text {
+.textBox .text.large {
 	padding: 8px;
 	user-select: none;
+	font-size: min(32pt, 6vw);
 }
 
 .textBox .text.small {
@@ -410,16 +406,6 @@ input[type="range"]:hover::-moz-range-thumb {
 	padding-right: calc(var(--textbox-width) * 0.1);
 	padding-top: calc(var(--textbox-height) * 0.22);
 	user-select: none;
-
-	font-size: min(28pt, 5vw);
-
-	/*@media (min-width: 640px) {
-		font-size: min(26pt, 4vw);
-	}
-
-	@media (min-width: 1024px) {
-		font-size: min(28pt, 5vw);
-	}*/
 }
 
 .textBoxBackground {

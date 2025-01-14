@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { isMobile } from 'react-device-detect';
 import './App.css';
 
@@ -80,6 +81,8 @@ export default function App() {
 
 	const [fadeinResultsText, setFadeinResultsText] = useState(false);
 	const [showFinishButton, setShowFinishButton] = useState(false);
+
+	const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
 
 	const showVolumeSlider = !isMobile;
 
@@ -339,7 +342,9 @@ export default function App() {
 	const elements: JSX.Element[] = [
 		<Fragment key="bg">
 			<style>
-				{`body { overflow-y: ${creditsOpen ? "scroll" : "hidden"}}`}
+				{`
+					body { overflow-y: ${creditsOpen ? "scroll" : "hidden"}}
+				`}
 			</style>
 			<div id="background">
 				<div className="bmd-background" />
@@ -351,9 +356,11 @@ export default function App() {
 			<div id="dialogueAdvance" onClick={() => onClickNext(false)} onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => { if (event.key === " ") { onClickNext(false); }}} />
 			<div id="bottomButtonsContainer">
 				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom" title="View on GitHub"><img src={githubLogoImage} /></button></a> : <></>}
-				{progressStage === ProgressStage.ClickStart ? <BmdButton buttonType={ButtonType.Bottom} onClick={() => setCreditsOpen(!creditsOpen)} title="Credits"><img src={creditsButtonImage} /></BmdButton> : <></>}
+				{progressStage === ProgressStage.ClickStart ? <BmdButton buttonType={ButtonType.Bottom} onClick={() => { setCreditsOpen(!creditsOpen); if (creditsOpen) document.documentElement.scrollTop = document.body.scrollTop = 0; } } title="Credits"><img src={creditsButtonImage} /></BmdButton> : <></>}
 				<BmdButton buttonType={ButtonType.Bottom} onClick={onClickMute} title="Mute sound"><img src={muted ? volumeOffImage : volumeOnImage} /></BmdButton>
-				{showVolumeSlider ? <input type="range" id="volumeSlider" min={0} max={100} defaultValue={50} onChange={onChangeVolume} ></input> : <></>}
+				{showVolumeSlider ? <>
+					<input type="range" id="volumeSlider" title="Audio volume" min={0} max={100} defaultValue={50} onChange={onChangeVolume} ></input>
+				</> : <></>}
 			</div>
 			
 			<audio id="backgroundMusic" preload="auto" src={backgroundMusicFile} muted={muted} loop />
