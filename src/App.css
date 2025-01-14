@@ -83,6 +83,7 @@ img#logo {
 #root {
 	height: 100vh;
 	width: 100vw;
+	overflow-x: hidden;
 }
 
 h2 {
@@ -291,8 +292,9 @@ input[type="range"]:hover::-moz-range-thumb {
 .bmd-button.choice > .choiceText {
 	padding-left: 8%;
 	padding-right: 8%;
+	
 	/*font-size: min(25pt, min(4vw, 4vh));*/
-	font-size: 0.8em;
+	font-size: 3.2vmin;
 }
 
 @keyframes fadein {

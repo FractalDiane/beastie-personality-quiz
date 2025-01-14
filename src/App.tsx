@@ -339,7 +339,7 @@ export default function App() {
 	const elements: JSX.Element[] = [
 		<Fragment key="bg">
 			<style>
-				{`body { margin-top: 0px; margin-left: 0px; overflow-y: ${creditsOpen ? "scroll" : "hidden"}}`}
+				{`body, #root { margin-top: 0px; margin-left: 0px; overflow-y: ${creditsOpen ? "scroll" : "hidden"}}`}
 			</style>
 			<div id="background">
 				<div className="bmd-background" />
