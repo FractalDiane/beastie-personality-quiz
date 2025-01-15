@@ -8,6 +8,7 @@ questions_ballin = []
 with open(sys.argv[1], newline="") as csvfile:
 	reader = csv.reader(csvfile)
 	next(reader)
+	index = 0
 	for row in reader:
 		if len(row[-1]) > 0:
 			if len(row[0]) > 0:
@@ -15,6 +16,7 @@ with open(sys.argv[1], newline="") as csvfile:
 					"question": row[0],
 					"sortOrder": int(row[5]) if len(row[5]) > 0 else 0,
 					"shuffleAnswers": len(row[6]) > 0,
+					"index": index,
 				}
 
 				answers = []
@@ -33,6 +35,8 @@ with open(sys.argv[1], newline="") as csvfile:
 					questions_ballin.append(question)
 				else:
 					questions_notballin.append(question)
+
+				index += 1
 
 with open("src/data/questions_notballin.json", "w") as file_notballin:
 	file_notballin.write(json.dumps(questions_notballin))

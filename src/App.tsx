@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import { isMobile } from 'react-device-detect';
 import './App.css';
 
@@ -81,8 +80,6 @@ export default function App() {
 
 	const [fadeinResultsText, setFadeinResultsText] = useState(false);
 	const [showFinishButton, setShowFinishButton] = useState(false);
-
-	const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
 
 	const showVolumeSlider = !isMobile;
 
@@ -253,10 +250,10 @@ export default function App() {
 		}
 	}
 
-	function onClickAnswer(points: string[]) {
+	function onClickAnswer(points: string[], index: number) {
 		const newScores = scores.clone();
 		for (const vibe of points) {
-			newScores.incrementScore(vibe.toLowerCase());
+			newScores.incrementScore(vibe.toLowerCase(), currentQuestion.index, index);
 		}
 
 		setScores(newScores);
@@ -267,6 +264,12 @@ export default function App() {
 			setCurrentQuestion(newQuestionPool[newQuestionPool.length - 1]);
 			setQuestions(newQuestionPool);
 		} else {
+			if (progressStage === ProgressStage.BallinQuestions) {
+				const tieBrokenScores = newScores.clone();
+				tieBrokenScores.tryBreakTies();
+				setScores(tieBrokenScores);
+			}
+
 			setShowDialogue(false);
 			advanceProgress();
 		}

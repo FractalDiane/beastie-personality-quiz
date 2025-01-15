@@ -19,6 +19,9 @@ import resultShy from "./data/result_shy.json";
 import resultSpacey from "./data/result_spacey.json";
 import resultTough from "./data/result_tough.json";
 
+import questionsFileNotBallin from "./data/questions_notballin.json";
+import questionsFileBallin from "./data/questions_ballin.json";
+
 const VIBES: Map<string, number> = new Map([
 	["anxious", 0],
 	["brash", 1],
@@ -80,17 +83,21 @@ export interface Question {
 	answers: Answer[];
 	shuffleAnswers: boolean;
 	sortOrder: number;
+	index: number;
 }
 
 export class Scores {
 	scores: number[];
+	answersPicked: number[];
 
 	constructor() {
 		this.scores = new Array<number>(20).fill(0);
+		this.answersPicked = new Array<number>(questionsFileNotBallin.length + questionsFileBallin.length).fill(-1);
 	}
 
-	incrementScore(vibe: string) {
+	incrementScore(vibe: string, questionIndex: number, answerIndex: number) {
 		++this.scores[VIBES.get(vibe)!];
+		this.answersPicked[questionIndex] = answerIndex;
 	}
 
 	getTopScoreResult(): VibeResult {
@@ -106,6 +113,50 @@ export class Scores {
 		return VIBE_RESULTS[maxIndex];
 	}
 
+	tryBreakTies() {
+		const tied = new Set<number>();
+		let maxScore = -1;
+		this.scores.forEach((score, index) => {
+			if (score > maxScore) {
+				tied.clear();
+				tied.add(index);
+				maxScore = score;
+			} else if (score === maxScore) {
+				tied.add(index);
+			}
+		});
+
+		if (tied.size > 1) {
+			let allQuestions: Question[] = [...questionsFileNotBallin];
+			allQuestions = allQuestions.concat([...questionsFileBallin]);
+			console.log(allQuestions);
+
+			allQuestions.forEach((question, index) => {
+				const thisQuestionVibes = new Set<string>();
+				for (const answer of question.answers) {
+					for (const vibe of answer.points) {
+						const vibeTrimmed = vibe.trim().toLowerCase();
+						const vibeNumber = VIBES.get(vibeTrimmed)!;
+						if (tied.has(vibeNumber)) {
+							thisQuestionVibes.add(vibeTrimmed);
+						}
+					}
+				}
+
+				if (thisQuestionVibes.size > 1) {
+					const pickedAnswer = this.answersPicked[index];
+					const pickedAnswerVibes = question.answers[pickedAnswer].points;
+					for (const vibe of pickedAnswerVibes) {
+						const vibeTrimmed = vibe.trim().toLowerCase();
+						if (thisQuestionVibes.has(vibeTrimmed)) {
+							++this.scores[VIBES.get(vibeTrimmed)!];
+						}
+					}
+				}
+			});
+		}
+	}
+
 	reset() {
 		this.scores = new Array<number>(20).fill(0);
 	}
@@ -113,6 +164,7 @@ export class Scores {
 	clone(): Scores {
 		const newScores = new Scores();
 		newScores.scores = [...this.scores];
+		newScores.answersPicked = [...this.answersPicked];
 		return newScores;
 	}
 }
