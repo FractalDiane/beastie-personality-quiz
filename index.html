@@ -11,7 +11,7 @@
 	<canvas id="backgroundCanvas" class="glslCanvas" data-fragment="
 	precision lowp float;
 
-	uniform float u_time;
+	uniform highp float u_time;
 	uniform vec2 u_resolution;
 
 	void main() { 
@@ -23,8 +23,8 @@
 			sin(u_time * 0.5 + UV.x + UV.y) * mult
 		);
 	
-		const float pixelate_amount = 80.0;
-		UV = floor(UV * pixelate_amount) / pixelate_amount;
+		//const float pixelate_amount = 80.0;
+		//UV = floor(UV * pixelate_amount) / pixelate_amount;
 		vec3 value = vec3(((UV.x + offset.x) + (1.0 - UV.y + offset.y)) / 2.0);
 		
 		const vec3 yellow = vec3(1.0, 0.884, 0.43);
