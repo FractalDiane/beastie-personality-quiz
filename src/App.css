@@ -85,6 +85,7 @@ body {
 	width: 100vw;
 	margin-top: 0px;
 	margin-left: 0px;
+	overflow-x: hidden;
 }
 
 #root {
@@ -172,39 +173,8 @@ input[type="range"]:hover::-moz-range-thumb {
 	background-color: #aaaaaa;
 }
 
-.bmd-background {
-	position: fixed;
-	z-index: -2;
-	background-image: url(./assets/background2a.png);
-	
-	height: 100vh;
-	background-size: 50% 200%;
-	width: 100vw;
-	background-repeat: repeat-y;
-
-	animation: bgscroll 18s linear infinite;
-	will-change: background-position-y;
-	transform: translate3d(0, 0, 0);
-}
-
-.bmd-background.top {
-	background-image: url(./assets/background2b.png);
-	animation-direction: reverse;
-	opacity: 80%;
-}
-
-.bmd-background.flipped {
-	animation-direction: reverse;
-	transform: scaleX(-1);
-	float: right;
-}
-
-.bmd-background.flipped.top {
-	animation-direction: normal;
-}
-
 #backgroundCanvas {
-	position: absolute;
+	position: fixed;
 	z-index: -1;
 	width: 100vw;
 	height: 100vh;
@@ -267,10 +237,6 @@ input[type="range"]:hover::-moz-range-thumb {
 }
 
 .bmd-button:hover {
-	background-color: #606060;
-}
-
-.bmd-button:focus {
 	background-color: #606060;
 }
 
