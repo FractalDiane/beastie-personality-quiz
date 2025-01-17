@@ -350,7 +350,7 @@ export default function App() {
 				`}
 			</style>
 			<div id="background-darken" style={{animation: bgDarkenAnimation.length > 0 ? `${bgDarkenAnimation} 1s forwards` : ``}} onAnimationEnd={onFadeAnimationEnd} />
-			<div id="dialogueAdvance" onClick={() => onClickNext(false)} onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => { if (event.key === " ") { onClickNext(false); }}} />
+			{!creditsOpen ? <div id="dialogueAdvance" onClick={() => onClickNext(false)} onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => { if (event.key === " ") { onClickNext(false); }}} /> : <></>}
 			<div id="bottomButtonsContainer">
 				{progressStage === ProgressStage.ClickStart ? <a href="https://github.com/FractalDiane/beastie-personality-quiz" target="_blank" rel="noopener noreferrer"><button className="bmd-button bottom" title="View on GitHub"><img src={githubLogoImage} /></button></a> : <></>}
 				{progressStage === ProgressStage.ClickStart ? <BmdButton buttonType={ButtonType.Bottom} onClick={() => { setCreditsOpen(!creditsOpen); if (creditsOpen) document.documentElement.scrollTop = document.body.scrollTop = 0; } } title="Credits"><img src={creditsButtonImage} /></BmdButton> : <></>}
