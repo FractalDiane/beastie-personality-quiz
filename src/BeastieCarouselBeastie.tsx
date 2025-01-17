@@ -41,14 +41,17 @@ export default function BeastieCarouselBeastie(props: BeastieCarouselBeastieProp
 		return () => window.removeEventListener("resize", onResize);
 	}, []);
 
+	const widthRef = 2560;
+	const widthRatio = Math.min(window.innerWidth / (widthRef * 0.35), 1.0);
+
 	const angleOffset = props.angle + Math.PI * 0.5;
-	const x = props.radiusX * Math.cos(angleOffset);
-	const y = props.radiusY * Math.sin(angleOffset);
+	const x = props.radiusX * Math.cos(angleOffset) * widthRatio;
+	const y = props.radiusY * Math.sin(angleOffset) * widthRatio;
 	const angleAdjusted = props.angle <= Math.PI ? props.angle : getClosest360(props.angle) - props.angle;
 	const angleDiff = Math.abs(Math.PI - angleAdjusted);
 
 	return <><img className="beastieCarouselBeastie" src={props.playCheerAnimation && props.isSelected ? `${props.beastie.name}_Cheer.png` : props.beastie.spriteIdle} style={{
-		transform: `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${clamp(angleDiff / Math.PI * 1, 0.3, 1)}) translateY(-100px) translateY(${props.beastie.yAdjust}px) translate3d(0, 0, 0)`,
+		transform: `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${clamp(angleDiff / Math.PI * 1, 0.3, 1)}) translateY(-100px) translateY(${props.beastie.yAdjust * widthRatio}px) scale(${widthRatio}) translate3d(0, 0, 0)`,
 		zIndex: 500 + Math.round(y),
 		filter: `brightness(0)`,
 		animation: `${props.isSelected && props.fadeIn ? "beastie-fadein 2s forwards linear" : ""}`,

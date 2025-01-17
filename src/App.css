@@ -457,6 +457,7 @@ input[type="range"]:hover::-moz-range-thumb {
 .beastieCarouselBeastie {
 	pointer-events: none;
 	user-select: none;
+	overflow: hidden;
 
 	position: absolute;
 	top: 50vh;
@@ -465,6 +466,7 @@ input[type="range"]:hover::-moz-range-thumb {
 
 .resultTextContainer {
 	position: absolute;
+	z-index: 5000;
 	width: 100vw;
 	display: flex;
 	flex-direction: row;
@@ -473,6 +475,7 @@ input[type="range"]:hover::-moz-range-thumb {
 
 .resultText {
 	position: relative;
+	
 	flex-grow: 0;
 	margin-top: 10vh;
 	color: white;
