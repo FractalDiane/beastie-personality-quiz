@@ -1,0 +1,102 @@
+[
+	{
+		"name": "Collarva",
+		"spriteIdle": "Collarva_idle.gif",
+		"yAdjust": 100
+	},
+	{
+		"name": "Servitt",
+		"spriteIdle": "Servitt_idle.gif",
+		"yAdjust": 0
+	},
+	{
+		"name": "Yueffowl",
+		"spriteIdle": "Yueffowl.png",
+		"yAdjust": 60
+	},
+	{
+		"name": "Woollie",
+		"spriteIdle": "Woollie.png",
+		"yAdjust": 50
+	},
+	{
+		"name": "Leobro",
+		"spriteIdle": "Leobro.png",
+		"yAdjust": 85
+	},
+	{
+		"name": "Skibble",
+		"spriteIdle": "Skibble_idle.gif",
+		"yAdjust": 135
+	},
+	{
+		"name": "Sefren",
+		"spriteIdle": "Sefren_idle.gif",
+		"yAdjust": 0
+	},
+	{
+		"name": "Sprecko",
+		"spriteIdle": "Sprecko_idle.gif",
+		"yAdjust": 80
+	},
+	{
+		"name": "Webbounce",
+		"spriteIdle": "Webbounce.png",
+		"yAdjust": 110
+	},
+	{
+		"name": "Gullit",
+		"spriteIdle": "Gullit_idle.gif",
+		"yAdjust": 100
+	},
+	{
+		"name": "Merrifly",
+		"spriteIdle": "Merrifly_idle.gif",
+		"yAdjust": 40
+	},
+	{
+		"name": "Calcroach",
+		"spriteIdle": "Calcroach.png",
+		"yAdjust": 70
+	},
+	{
+		"name": "Troglum",
+		"spriteIdle": "Troglum.png",
+		"yAdjust": 110
+	},
+	{
+		"name": "Rookee",
+		"spriteIdle": "Rookee_idle.gif",
+		"yAdjust": 70
+	},
+	{
+		"name": "Axolati",
+		"spriteIdle": "Axolati_idle.gif",
+		"yAdjust": 65
+	},
+	{
+		"name": "Radillo",
+		"spriteIdle": "Radillo.png",
+		"yAdjust": 110
+	},
+	{
+		"name": "Punkchirp",
+		"spriteIdle": "Punkchirp.png",
+		"yAdjust": 105
+	},
+	{
+		"name": "Shooga",
+		"spriteIdle": "Shooga_idle.gif",
+		"yAdjust": 100
+	},
+	{
+		"name": "Bildit",
+		"spriteIdle": "Bildit_idle.gif",
+		"yAdjust": 60
+	},
+	{
+		"name": "Kichik",
+		"spriteIdle": "Kichik_idle.gif",
+		"yAdjust": 90
+	}
+]

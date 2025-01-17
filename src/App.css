@@ -1,0 +1,530 @@
+@font-face {
+	font-family: Go Banana;
+	src: url(./assets/GoBanana.ttf);
+}
+
+@font-face {
+	font-family: Sports Jersey;
+	src: url(./assets/sportsjersey.ttf);
+}
+
+/* # */
+.red {
+	color: red;
+}
+
+/* $ */
+.blue {
+	color: blue;
+}
+
+/* ^ */
+.bodyYellow {
+	color: #ffb547;
+}
+
+/* & */
+.spiritPink {
+	color: #fb5ca6;
+}
+
+/* * */
+.mindBlue {
+	color: #7cbbfb;
+}
+
+img#logo {
+	margin-top: 16px;
+	max-width: 95vw;
+	pointer-events: none;
+	user-select: none;
+}
+
+@keyframes bgscroll {
+	0% {
+		background-position-y: 0%;
+	}
+
+	100% {
+		background-position-y: 100%;
+	}
+}
+
+@keyframes hueshift {
+	0% {
+		background-color: #fff988;
+	}
+
+	33% {
+		background-color: #ff96c7;
+	}
+
+	66% {
+		background-color: #a2d0ff;
+	}
+
+	100% {
+		background-color: #fff988;
+	}
+}
+
+@keyframes buttonScroll {
+	0% {
+		background-position-x: 0%;
+		background-position-y: 0%;
+	}
+
+	100% {
+		background-position-x: 100%;
+		background-position-y: 100%;
+	}
+}
+
+body {
+	height: 100vh;
+	width: 100vw;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+#root {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+h2 {
+	font-family: Go Banana;
+	padding-left: 8px;
+	padding-right: 8px;
+	user-select: none;
+	font-size: xx-large;
+}
+
+h3, h4 {
+	font-family: Go Banana;
+	padding-left: 8px;
+	padding-right: 8px;
+	user-select: none;
+	font-size: x-large;
+}
+
+input[type="range"] {
+	width: min(150px, 20vw);
+	--thumb-size: min(20px, 5vw);
+}
+
+input[type="range"] {
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent;
+}
+ 
+input[type="range"]:focus {
+	outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+	background-color: #222222;
+	border-radius: 0.5rem;
+	height: 0.5rem;  
+}
+ 
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	margin-top: -6px;
+ 
+	background-color: #666666;
+	clip-path: circle(10px);
+	width: var(--thumb-size);
+	height: var(--thumb-size);
+}
+ 
+input[type="range"]:focus::-webkit-slider-thumb {   
+	background-color: #aaaaaa;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {   
+	background-color: #aaaaaa;
+}
+ 
+input[type="range"]::-moz-range-track {
+	background-color: #222222;
+	border-radius: 0.5rem;
+	height: 0.5rem;
+}
+ 
+input[type="range"]::-moz-range-thumb {
+	border: none;
+	border-radius: 0;
+
+	background-color: #666666;
+	clip-path: circle(10px);
+	width: var(--thumb-size);
+	height: var(--thumb-size);
+}
+ 
+input[type="range"]:focus::-moz-range-thumb {
+	background-color: #aaaaaa;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+	background-color: #aaaaaa;
+}
+
+.bmd-background {
+	position: fixed;
+	z-index: -2;
+	background-image: url(./assets/background2a.png);
+	
+	height: 100vh;
+	background-size: 50% 200%;
+	width: 100vw;
+	background-repeat: repeat-y;
+
+	animation: bgscroll 18s linear infinite;
+	will-change: background-position-y;
+	transform: translate3d(0, 0, 0);
+}
+
+.bmd-background.top {
+	background-image: url(./assets/background2b.png);
+	animation-direction: reverse;
+	opacity: 80%;
+}
+
+.bmd-background.flipped {
+	animation-direction: reverse;
+	transform: scaleX(-1);
+	float: right;
+}
+
+.bmd-background.flipped.top {
+	animation-direction: normal;
+}
+
+#backgroundCanvas {
+	position: absolute;
+	z-index: -1;
+	width: 100vw;
+	height: 100vh;
+}
+
+#background-darken {
+	position: fixed;
+	background-color: black;
+	z-index: -1;
+	opacity: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+#dialogueAdvance {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 500;
+}
+
+.bmd-button {
+	color: white;
+	border: 0px;
+
+	background-image: url(./assets/stripes.svg);
+	background-color: #303030;
+	background-blend-mode: multiply;
+	background-size: 20px;
+	animation: buttonScroll linear infinite;
+	animation-duration: 40s;
+	transform: translate3d(0, 0, 0);
+
+	--parallelogram-edge: min(50px, 10%);
+	clip-path: polygon(var(--parallelogram-edge) 0, 100% 0, calc(100% - var(--parallelogram-edge)) 100%, 0 100%);
+
+	position: relative;
+	font-family: Go Banana;
+	font-size: max(100%, min(32pt, 2vw));
+
+	z-index: 1000;
+}
+
+.bmd-button-arrow {
+	width: 5vw;
+	height: 5vh;
+}
+
+.bmd-button.start {
+	width: min(65vw, 400px);
+	height: min(10vh, 100px);
+
+	left: 50vw;
+	transform: translateX(-50%);
+	margin-top: 1vh;
+}
+
+#startButtonContainer {
+	margin-top: 10vh;
+}
+
+.bmd-button:hover {
+	background-color: #606060;
+}
+
+.bmd-button:focus {
+	background-color: #606060;
+}
+
+#bottomButtonsContainer {
+	position: fixed;
+	bottom: 5px;
+	left: 5px;
+	z-index: 1000;
+}
+
+.bmd-button.bottom {
+	width: min(10vw, 50px);
+	height: min(10vw, 50px);
+	top: 0;
+	left: 0;
+}
+
+.bmd-button.bottom > img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: 70%;
+	pointer-events: none;
+	user-select: none;
+	fill: white;
+}
+
+#bottomButtonsContainer > input[type="range"] {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#skipButtonContainer {
+	position: absolute;
+	bottom: 10vh;
+}
+
+.bmd-button.choice {
+	width: 50vw;
+	height: 10vh;
+}
+
+.bmd-button.choice > .choiceText {
+	padding-left: 8%;
+	padding-right: 8%;
+
+	@media (max-width: 420px) {
+		font-size: max(90%, min(32pt, 2vw));
+	}
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0.7;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 0.7;
+	}
+}
+
+@keyframes fadeinFull {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes beastie-fadein {
+	from {
+		filter: brightness(0);
+	}
+
+	to {
+		filter: brightness(1);
+	}
+}
+
+.textContainer {
+	position: absolute;
+	left: 50vw;
+	transform: translateX(-50%);
+}
+
+.textContainer.center {
+	top: 50vh;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.textContainer.bottom {
+	--textbox-width: min(80vw, 1000px);
+	--textbox-height: min(25vh, 250px);
+	bottom: 5vh;
+	width: var(--textbox-width);
+	height: var(--textbox-height);
+}
+
+.textBox {
+	color: white;
+	font-family: Go Banana;
+	font-size: max(100%, min(28pt, 3vw));
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+}
+
+.textBox.polygon {
+	clip-path: polygon(
+		50% 0%,
+		81.25% 10.1%,
+		94% 24.4%,
+		100% 50%,
+		94% 75.6%,
+		81.25% 89.9%,
+		50% 100%,
+		18.75% 89.9%,
+		6% 75.6%, 0% 50%,
+		6% 24.4%,
+		18.75% 10.1%
+	);
+}
+
+.textBox.faded {
+	background-image: url(./assets/box_blur.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.textBox .text.large {
+	padding: 8px;
+	user-select: none;
+	font-size: min(32pt, 6vw);
+}
+
+.textBox .text.small {
+	padding-left: calc(var(--textbox-width) * 0.1);
+	padding-right: calc(var(--textbox-width) * 0.1);
+	padding-top: calc(var(--textbox-height) * 0.22);
+	user-select: none;
+}
+
+.textBoxBackground {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(./assets/textbox_back_texture.svg);
+	background-repeat: repeat;
+	background-size: 10%;
+	clip-path: polygon(
+		50% 4%,
+		18% 7.4%,
+		4.8% 21.4%,
+		1% 51%,
+		6.6% 74.3%,
+		51.3% 95.3%,
+		81.1% 91.1%,
+		93.4% 82.5%,
+		99% 51%,
+		93.5% 24.1%,
+		80.8% 12.1%
+	);
+
+	animation: buttonScroll 40s linear infinite;
+	will-change: background-position;
+	transform: translate3d(0, 0, 0);
+}
+
+
+@keyframes textIndicatorRotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.textIndicator {
+	animation: textIndicatorRotate 20s linear infinite;
+	width: min(8vw, 50px);
+	height: min(8vw, 50px);
+	user-select: none;
+	pointer-events: none;
+}
+
+#choices {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding-top: 5vh;
+	z-index: 1000;
+}
+
+.spacer {
+	min-height: 5vh;
+}
+
+.beastieCarousel {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.beastieCarouselBeastie {
+	pointer-events: none;
+	user-select: none;
+
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+}
+
+.resultTextContainer {
+	position: absolute;
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	opacity: 0;
+}
+
+.resultText {
+	position: relative;
+	flex-grow: 0;
+	margin-top: 10vh;
+	color: white;
+	text-shadow: 0 0.3vh 0 black, 0.2vw 0 0 black, -0.2vw 0 0 black, 0 -0.2vh black,
+	0.2vw 0.2vh 0 black, -0.2vw 0.2vh 0 black, 0.2vw -0.2vh 0 black, -0.2vw -0.2vh 0 black;
+}
+
+.resultText .top {
+	font-family: Go Banana;
+	font-size: min(42pt, 6vw);
+}
+
+.resultText .bottom {
+	font-family: Sports Jersey;
+	font-size: min(68pt, 10vw);
+}
+
+.spacerFlex {
+	position: relative;
+	flex-grow: 1;
+}
