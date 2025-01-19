@@ -18,7 +18,7 @@ Diane Sparks
 #### An arrangement of the PMD quiz theme by
 Arata Iiyoshi (original version)\
 Keisuke Ito (<cite>Gates to Infinity</cite> version)\
-Yasuhiro Kawagoe (<cite>Gates to Infinity</cite> version)\
+Yasuhiro Kawagoe (<cite>Gates to Infinity</cite> version)
 #### And with elements of "Ready, Set, Ball!" and "Spontaneous Sport" by
 Lena Raine
 
