@@ -23,8 +23,8 @@
 	<meta name="theme-color" content="#fb5ca6">
 
 	<script src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
-    <script type="module" crossorigin src="/beastie-personality-quiz/assets/index-CFOl80Rq.js"></script>
-    <link rel="stylesheet" crossorigin href="/beastie-personality-quiz/assets/index-DKrY0H95.css">
+    <script type="module" crossorigin src="/beastie-personality-quiz/assets/index-CSNLrqdt.js"></script>
+    <link rel="stylesheet" crossorigin href="/beastie-personality-quiz/assets/index-BqEvj20O.css">
   </head>
   <body>
 	<canvas id="backgroundCanvas" class="glslCanvas" data-fragment="
@@ -42,8 +42,6 @@
 			sin(u_time * 0.5 + UV.x + UV.y) * mult
 		);
 	
-		//const float pixelate_amount = 80.0;
-		//UV = floor(UV * pixelate_amount) / pixelate_amount;
 		vec3 value = vec3(((UV.x + offset.x) + (1.0 - UV.y + offset.y)) / 2.0);
 		
 		const vec3 yellow = vec3(1.0, 0.884, 0.43);
