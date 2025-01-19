@@ -213,7 +213,7 @@ input[type="range"]:hover::-moz-range-thumb {
 
 	position: relative;
 	font-family: Go Banana;
-	font-size: max(100%, min(32pt, 2vw));
+	font-size: max(100%, min(32pt, 8vw));
 
 	z-index: 1000;
 }
@@ -279,6 +279,7 @@ input[type="range"]:hover::-moz-range-thumb {
 .bmd-button.choice {
 	width: 50vw;
 	height: 10vh;
+	font-size: max(100%, min(32pt, 2vw));
 }
 
 .bmd-button.choice > .choiceText {
@@ -384,7 +385,7 @@ input[type="range"]:hover::-moz-range-thumb {
 .textBox .text.large {
 	padding: 8px;
 	user-select: none;
-	font-size: min(32pt, 6vw);
+	font-size: max(100%, min(32pt, 8vw));
 }
 
 .textBox .text.small {
@@ -392,6 +393,8 @@ input[type="range"]:hover::-moz-range-thumb {
 	padding-right: calc(var(--textbox-width) * 0.1);
 	padding-top: calc(var(--textbox-height) * 0.22);
 	user-select: none;
+
+	font-size: max(100%, min(28pt, 3.6vw));;
 }
 
 .textBoxBackground {
