@@ -6,11 +6,12 @@ import { ButtonType } from "./types";
 export interface BmdButtonProps {
 	buttonType: ButtonType;
 	title?: string;
+	disable?: boolean;
 	onClick: () => void;
 }
 
 export default function BmdButton(props: PropsWithChildren<BmdButtonProps>) {
 	return <>
-		<button className={`bmd-button ${props.buttonType}`} title={props.title} onClick={props.onClick}>{props.children}</button>
+		<button className={`bmd-button ${props.buttonType}`} title={props.title} disabled={props.disable} onClick={props.onClick}>{props.children}</button>
 	</>;
 }

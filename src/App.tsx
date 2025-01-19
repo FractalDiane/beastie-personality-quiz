@@ -59,6 +59,7 @@ export default function App() {
 	const [currentDialogue, setCurrentDialogue] = useState(dialogueFile.intro);
 	const [dialogueIndex, setDialogueIndex] = useState(0);
 	const [canAdvanceDialogue, setCanAdvanceDialogue] = useState(false);
+	const [clickTimeout, setClickTimeout] = useState(false);
 
 	const [questions, setQuestions] = useState(getShuffledQuestionList(questionsFileNotBallin));
 	const [currentQuestion, setCurrentQuestion] = useState<Question>(questions[questions.length - 1]);
@@ -273,6 +274,9 @@ export default function App() {
 			setShowDialogue(false);
 			advanceProgress();
 		}
+
+		setClickTimeout(true);
+		setTimeout(() => setClickTimeout(false), 300);
 	}
 
 	function onClickRestart() {
@@ -419,7 +423,7 @@ export default function App() {
 				if (showQuestions) {
 					elements.push(
 						<Fragment key="questions">
-							<Choices question={currentQuestion} onClickCallback={onClickAnswer} />
+							<Choices question={currentQuestion} onClickCallback={onClickAnswer} clickTimeout={clickTimeout} />
 							<div className="textContainer bottom">
 								<TextBox text={currentQuestion.question} boxType={TextBoxType.Box} showAdvanceIndicator={false} smallText={true} centerText={false} textFinishedCallback={onDialogueTextFinished} />
 							</div>
