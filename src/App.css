@@ -259,7 +259,7 @@ input[type="range"]:hover::-moz-range-thumb {
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	width: 70%;
+	width: 50%;
 	pointer-events: none;
 	user-select: none;
 	fill: white;

@@ -18,7 +18,7 @@ import creditsButtonImage from './assets/credits.svg';
 import volumeOnImage from './assets/volume_on.svg';
 import volumeOffImage from './assets/volume_off.svg';
 import githubLogoImage from './assets/github-mark-white.svg';
-import backgroundMusicFile from './assets/music.ogg';
+import backgroundMusicFile from './assets/music.mp3';
 import BmdButton from './BmdButton';
 import { startsWithVowel } from './TextFunctions';
 import ResultText from './ResultText';
@@ -371,7 +371,13 @@ export default function App() {
 					<Fragment key="startup">
 						<center><img id="logo" src={logoImage} alt="Beastie Personality Quiz" /></center>
 						<div id="startButtonContainer">
-							<BmdButton buttonType={ButtonType.Generic} onClick={() => onClickStart(false)}>Start</BmdButton>
+							<BmdButton buttonType={ButtonType.Generic} onClick={() => { 
+								/*if (isIOS && !backgroundMusic!.paused) {
+									backgroundMusic!.play();
+								}*/
+
+								onClickStart(false)
+							}}>Start</BmdButton>
 						</div>
 					</Fragment>
 				);
