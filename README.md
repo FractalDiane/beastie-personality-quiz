@@ -6,7 +6,7 @@ A PMD-inspired personality quiz, with <cite>Beastieball</cite> Beasties.
 ### Created by
 Diane Sparks
 
-### Additional questions written by
+### Additional questions and writing by
 EspressoKitsune\
 Dr. Chillbrain
 

@@ -5,7 +5,7 @@ export interface ResultTextProps {
 
 export default function ResultText(props: ResultTextProps) {
 	return <div className="resultText">
-		<center><div className="top">{props.subtext}</div></center>
-		<center><div className="bottom">{props.text}</div></center>
+		<div className="center"><div className="top">{props.subtext}</div></div>
+		<div className="center"><div className="bottom">{props.text}</div></div>
 	</div>
 }

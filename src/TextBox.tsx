@@ -50,6 +50,6 @@ export default function TextBox(props: TextBoxProps) {
 			backgroundColor: `rgba(0, 0, 0, ${props.boxType === TextBoxType.Box ? 1 : props.boxType === TextBoxType.Faded ? 0 : 0})`,
 		}}>
 		<div className={`text ${props.smallText ? "small" : "large"}`} style={{textAlign: `${props.centerText ? "center" : "left"}`, paddingTop: `${props.boxType === TextBoxType.Faded ? `5vh` : `calc(var(--textbox-height) * 0.22)`}`}}>{text}</div>
-		<center><img className="textIndicator" src={ballshroomImage} style={{opacity: props.showAdvanceIndicator && charIndex == props.text.length ? 1 : 0}} /></center>
+		<div className="center"><img className="textIndicator" src={ballshroomImage} style={{opacity: props.showAdvanceIndicator && charIndex == props.text.length ? 1 : 0}} /></div>
 	</div></>;
 }

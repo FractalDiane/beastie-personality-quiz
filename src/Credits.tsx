@@ -1,9 +1,9 @@
 export default function Credits() {
-	return <center>
+	return <div className="center">
 		<h2>Created by</h2>
 		<h3>Diane Sparks</h3>
 		<br/>
-		<h2>Additional questions written by</h2>
+		<h2>Additional questions and writing by</h2>
 		<h3>EspressoKitsune</h3>
 		<h3>Dr. Chillbrain</h3>
 		<br/>
@@ -25,5 +25,5 @@ export default function Credits() {
 		<h4><cite>Beastieball</cite> and all Beasties belong to Wishes Unlimited.</h4>
 		<h4><a href="https://store.steampowered.com/app/1864950/Beastieball/" target="_blank" rel="noopener noreferrer">Go buy the game here!</a></h4>
 		<br/>
-	</center>;
+	</div>;
 }

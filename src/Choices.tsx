@@ -11,9 +11,9 @@ export interface ChoicesProps {
 export default function Choices(props: ChoicesProps) {
 	const result = [];
 	for (let i = 0; i < props.question.answers.length; ++i) {
-		result.push(<center key={i}><BmdButton buttonType={ButtonType.Choice} disable={props.clickTimeout} onClick={() => props.onClickCallback(props.question.answers[i].points, i)}>
+		result.push(<div className="center" key={i}><BmdButton buttonType={ButtonType.Choice} disable={props.clickTimeout} onClick={() => props.onClickCallback(props.question.answers[i].points, i)}>
 			<div className="choiceText">{jsonStringToJSX(props.question.answers[i].answer, Infinity)}</div>
-		</BmdButton><div className="spacer" /></center>);
+		</BmdButton><div className="spacer" /></div>);
 	}
 
 	return <div id="choices">{result}</div>;

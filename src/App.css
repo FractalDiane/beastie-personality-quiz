@@ -508,3 +508,7 @@ input[type="range"]:hover::-moz-range-thumb {
 	position: relative;
 	flex-grow: 1;
 }
+
+.center {
+	text-align: center;
+}

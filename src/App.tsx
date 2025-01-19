@@ -373,13 +373,9 @@ export default function App() {
 			case ProgressStage.ClickStart: {
 				elements.push(
 					<Fragment key="startup">
-						<center><img id="logo" src={logoImage} alt="Beastie Personality Quiz" /></center>
+						<div className="center"><img id="logo" src={logoImage} alt="Beastie Personality Quiz" /></div>
 						<div id="startButtonContainer">
 							<BmdButton buttonType={ButtonType.Generic} onClick={() => { 
-								/*if (isIOS && !backgroundMusic!.paused) {
-									backgroundMusic!.play();
-								}*/
-
 								onClickStart(false)
 							}}>Start</BmdButton>
 						</div>
@@ -460,7 +456,7 @@ export default function App() {
 	} else {
 		elements.push(
 			<Fragment key="credits">
-				<center><img id="logo" src={logoImage} /></center>
+				<div className="center"><img id="logo" src={logoImage} /></div>
 				<Credits />
 			</Fragment>
 		)
