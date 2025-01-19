@@ -435,7 +435,7 @@ export default function App() {
 
 						<BeastieCarousel beasties={beastiesFile} selectedIndex={yourBeastieIndex} radiusX={700 + carouselRadiusXAdd} radiusY={150 + carouselRadiusYAdd} rotationAdd={carouselRotationAdd} yAdd={carouselYAdd} show={showCarousel} fadeIn={fadedInBeastie} playCheerAnimation={showCheerAnimation} />
 						{showDialogue ? <div className="textContainer bottom">
-							<TextBox text={`...a${startsWithVowel(yourBeastieName) ? "n" : ""} ^${yourBeastieName}\`!`} boxType={TextBoxType.Faded} showAdvanceIndicator={true} smallText={true} centerText={true} textFinishedCallback={onDialogueTextFinished} />
+							<TextBox text={`...a${startsWithVowel(yourBeastieName) ? "n" : ""} ^${yourBeastieName}\`!`} boxType={TextBoxType.Faded} showAdvanceIndicator={true} smallText={false} centerText={true} textFinishedCallback={onDialogueTextFinished} />
 						</div> : <></>}
 
 						{showFinishButton ? <div id="skipButtonContainer">

@@ -339,6 +339,7 @@ input[type="range"]:hover::-moz-range-thumb {
 
 .textContainer.center {
 	top: 50vh;
+	width: 80vw;
 	transform: translateX(-50%) translateY(-50%);
 }
 
