@@ -395,7 +395,10 @@ input[type="range"]:hover::-moz-range-thumb {
 	padding-top: calc(var(--textbox-height) * 0.22);
 	user-select: none;
 
-	font-size: max(100%, min(28pt, 3.6vw));;
+	font-size: max(100%, min(28pt, 3.6vw));
+	@media (max-height: 880px) {
+		font-size: max(80%, min(28pt, 2vw));
+	}
 }
 
 .textBoxBackground {
