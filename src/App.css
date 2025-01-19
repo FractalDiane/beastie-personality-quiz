@@ -289,6 +289,10 @@ input[type="range"]:hover::-moz-range-thumb {
 	@media (max-width: 420px) {
 		font-size: max(90%, min(32pt, 2vw));
 	}
+
+	@media (max-height: 950px) {
+		font-size: max(80%, min(16pt, 2vh));
+	}
 }
 
 @keyframes fadein {
