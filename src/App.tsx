@@ -63,6 +63,7 @@ export default function App() {
 
 	const [questions, setQuestions] = useState(getShuffledQuestionList(questionsFileNotBallin));
 	const [currentQuestion, setCurrentQuestion] = useState<Question>(questions[questions.length - 1]);
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 	const [scores, setScores] = useState(new Scores());
 	const [yourVibe, setYourVibe] = useState("");
 	const [yourBeastieName, setYourBeastieName] = useState("");
@@ -83,6 +84,7 @@ export default function App() {
 	const [showFinishButton, setShowFinishButton] = useState(false);
 
 	const showVolumeSlider = !isMobile;
+	const totalQuestionCount = questionsFileNotBallin.length + questionsFileBallin.length;
 
 	const cheerAudio = document.getElementById("cheerAudio") as HTMLAudioElement | null;
 	if (cheerAudio !== null) {
@@ -263,6 +265,7 @@ export default function App() {
 		newQuestionPool.pop();
 		if (newQuestionPool.length > 0) {
 			setCurrentQuestion(newQuestionPool[newQuestionPool.length - 1]);
+			setCurrentQuestionIndex(currentQuestionIndex + 1);
 			setQuestions(newQuestionPool);
 		} else {
 			if (progressStage === ProgressStage.BallinQuestions) {
@@ -288,6 +291,7 @@ export default function App() {
 		const newQuestions = getShuffledQuestionList(questionsFileNotBallin);
 		setQuestions(newQuestions);
 		setCurrentQuestion(newQuestions[newQuestions.length - 1]);
+		setCurrentQuestionIndex(0);
 		
 		setShowCheerAnimation(false);
 		setFadedInBeastie(false);
@@ -317,6 +321,7 @@ export default function App() {
 				const ballinQuestions = getShuffledQuestionList(questionsFileBallin);
 				setQuestions(ballinQuestions);
 				setCurrentQuestion(ballinQuestions[ballinQuestions.length - 1]);
+				setCurrentQuestionIndex(currentQuestionIndex + 1);
 				setShowQuestions(true);
 			} break;
 			
@@ -422,6 +427,9 @@ export default function App() {
 							<Choices question={currentQuestion} onClickCallback={onClickAnswer} clickTimeout={clickTimeout} />
 							<div className="textContainer bottom">
 								<TextBox text={currentQuestion.question} boxType={TextBoxType.Box} showAdvanceIndicator={false} smallText={true} centerText={false} textFinishedCallback={onDialogueTextFinished} />
+							</div>
+							<div className="progressText">
+								Question {currentQuestionIndex + 1} of {totalQuestionCount}
 							</div>
 						</Fragment>
 					);

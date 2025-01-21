@@ -454,6 +454,20 @@ input[type="range"]:hover::-moz-range-thumb {
 	z-index: 1000;
 }
 
+.progressText {
+	color: black;
+	font-family: Go Banana;
+	font-size: max(100%, min(28pt, 3.6vw));
+	@media (max-height: 880px) {
+		font-size: max(80%, min(28pt, 2vw));
+	}
+
+	position: fixed;
+	text-align: right;
+	right: 1vw;
+	bottom: 1vh;
+}
+
 .spacer {
 	min-height: 5vh;
 }
