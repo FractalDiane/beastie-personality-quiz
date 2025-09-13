@@ -16,7 +16,7 @@
 	},
 	{
 		"name": "Woollie",
-		"spriteIdle": "Woollie.png",
+		"spriteIdle": "Woollie_idle.gif",
 		"yAdjust": 50
 	},
 	{
