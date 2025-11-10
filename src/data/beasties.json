@@ -11,7 +11,7 @@
 	},
 	{
 		"name": "Yueffowl",
-		"spriteIdle": "Yueffowl.png",
+		"spriteIdle": "Yueffowl_idle.gif",
 		"yAdjust": 60
 	},
 	{
