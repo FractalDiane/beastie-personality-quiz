@@ -61,7 +61,7 @@
 	},
 	{
 		"name": "Troglum",
-		"spriteIdle": "Troglum.png",
+		"spriteIdle": "Troglum_idle.gif",
 		"yAdjust": 110
 	},
 	{
@@ -76,7 +76,7 @@
 	},
 	{
 		"name": "Radillo",
-		"spriteIdle": "Radillo.png",
+		"spriteIdle": "Radillo_idle.gif",
 		"yAdjust": 110
 	},
 	{
