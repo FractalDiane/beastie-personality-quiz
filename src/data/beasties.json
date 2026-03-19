@@ -21,7 +21,7 @@
 	},
 	{
 		"name": "Leobro",
-		"spriteIdle": "Leobro.png",
+		"spriteIdle": "Leobro_idle.gif",
 		"yAdjust": 85
 	},
 	{
