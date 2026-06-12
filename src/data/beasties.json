@@ -41,7 +41,7 @@
 	},
 	{
 		"name": "Webbounce",
-		"spriteIdle": "Webbounce.png",
+		"spriteIdle": "Webbounce_Idle.gif",
 		"yAdjust": 110
 	},
 	{
@@ -51,7 +51,7 @@
 	},
 	{
 		"name": "Merrifly",
-		"spriteIdle": "Merrifly_idle.gif",
+		"spriteIdle": "Merrifly_Idle.gif",
 		"yAdjust": 40
 	},
 	{
