@@ -56,7 +56,7 @@
 	},
 	{
 		"name": "Calcroach",
-		"spriteIdle": "Calcroach.png",
+		"spriteIdle": "Calcroach_Idle.gif",
 		"yAdjust": 70
 	},
 	{
